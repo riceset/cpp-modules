@@ -1,0 +1,16 @@
+[
+ {
+  "directory": "/Users/riceset/cpp-modules/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-std=c++98",
+   "phonebook.cpp",
+   "-o",
+   "phonebook"
+  ],
+  "file": "phonebook.cpp"
+ }
+]
