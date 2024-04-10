@@ -6,11 +6,21 @@
 
 class Contact {
 public:
-	std::string getFirstName() const { return firstName; }
-	std::string getLastName() const { return lastName; }
-	std::string getNickname() const { return nickname; }
-	std::string getPhoneNumber() const { return phoneNumber; }
-	std::string getDarkestSecret() const { return darkestSecret; }
+	std::string getFirstName() const {
+		return (firstName.length() > 10 ? firstName.substr(0, 9) + "." : firstName);
+	}
+	std::string getLastName() const {
+		return (lastName.length() > 10 ? lastName.substr(0, 9) + "." : lastName);
+	}
+	std::string getNickname() const {
+		return (nickname.length() > 10 ? nickname.substr(0, 9) + "." : nickname);
+	}
+	std::string getPhoneNumber() const {
+		return (phoneNumber.length() > 10 ? phoneNumber.substr(0, 9) + "." : phoneNumber);
+	}
+	std::string getDarkestSecret() const {
+		return (darkestSecret.length() > 10 ? darkestSecret.substr(0, 9) + "." : darkestSecret);
+	}
 
 	void setFirstName(const std::string &value) { firstName = value; }
 	void setLastName(const std::string &value) { lastName = value; }
