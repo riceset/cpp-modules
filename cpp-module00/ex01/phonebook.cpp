@@ -6,20 +6,24 @@
 
 class Contact {
 public:
+	std::string formatString(const std::string &str) const {
+		return (str.length() > 10 ? str.substr(0, 9) + "." : str);
+	}
+
 	std::string getFirstName() const {
-		return (firstName.length() > 10 ? firstName.substr(0, 9) + "." : firstName);
+		return (formatString(firstName));
 	}
 	std::string getLastName() const {
-		return (lastName.length() > 10 ? lastName.substr(0, 9) + "." : lastName);
+		return (formatString(lastName));
 	}
 	std::string getNickname() const {
-		return (nickname.length() > 10 ? nickname.substr(0, 9) + "." : nickname);
+		return (formatString(nickname));
 	}
 	std::string getPhoneNumber() const {
-		return (phoneNumber.length() > 10 ? phoneNumber.substr(0, 9) + "." : phoneNumber);
+		return (formatString(phoneNumber));
 	}
 	std::string getDarkestSecret() const {
-		return (darkestSecret.length() > 10 ? darkestSecret.substr(0, 9) + "." : darkestSecret);
+		return (formatString(darkestSecret));
 	}
 
 	void setFirstName(const std::string &value) { firstName = value; }

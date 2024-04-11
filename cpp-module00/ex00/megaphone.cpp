@@ -6,7 +6,7 @@
 /*   By: tkomeno <tkomeno@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 20:51:45 by tkomeno           #+#    #+#             */
-/*   Updated: 2024/03/07 20:51:50 by tkomeno          ###   ########.fr       */
+/*   Updated: 2024/04/10 14:27:35 by tkomeno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 #include <iostream>
 #include <cctype>
 
+#define DEFAULT_MESSAGE "* LOUD AND UNBEARABLE FEEDBACK NOISE *"
+
 int main(int argc, char **argv) {
 	if (argc < 2) {
-		std::cerr << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+		std::cerr << DEFAULT_MESSAGE << std::endl;
 		return (EXIT_FAILURE);
 	}
 
