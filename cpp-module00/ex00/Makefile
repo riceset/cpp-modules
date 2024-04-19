@@ -7,10 +7,15 @@ SRCS = megaphone.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
+RM = rm -f
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+	$(CXX) $(OBJS) -o $@
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
