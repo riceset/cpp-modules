@@ -1,107 +1,19 @@
-#include <iostream>
-#include <iomanip>
+#include "phonebook.hpp"
 
-#define PROMPT_ERROR 1
-#define PROMPT_SUCCESS 0
+void Phonebook::search() {
+	for (int i = 0; i < contactIndex; ++i) {
+		std::cout << std::setw(10) << i;
+		std::cout << "|";
 
-class Contact {
-public:
-	std::string formatString(const std::string &str) const {
-		return (str.length() > 10 ? str.substr(0, 9) + "." : str);
+		std::cout << std::setw(10) << contacts[i].getFirstName();
+		std::cout << "|";
+
+		std::cout << std::setw(10) << contacts[i].getLastName();
+		std::cout << "|";
+
+		std::cout << std::setw(10) << contacts[i].getNickname();
+		std::cout << std::endl;
 	}
-
-	std::string getFirstName() const {
-		return (formatString(firstName));
-	}
-	std::string getLastName() const {
-		return (formatString(lastName));
-	}
-	std::string getNickname() const {
-		return (formatString(nickname));
-	}
-	std::string getPhoneNumber() const {
-		return (formatString(phoneNumber));
-	}
-	std::string getDarkestSecret() const {
-		return (formatString(darkestSecret));
-	}
-
-	void setFirstName(const std::string &value) { firstName = value; }
-	void setLastName(const std::string &value) { lastName = value; }
-	void setNickname(const std::string &value) { nickname = value; }
-	void setPhoneNumber(const std::string &value) { phoneNumber = value; }
-	void setDarkestSecret(const std::string &value) { darkestSecret = value; }
-
-	void fillDetails() {
-	std::string input;
-
-	std::cout << "Enter first name: ";
-	std::getline(std::cin, input);
-	setFirstName(input);
-
-	std::cout << "Enter last name: ";
-	std::getline(std::cin, input);
-	setLastName(input);
-
-	std::cout << "Enter nickname: ";
-	std::getline(std::cin, input);
-	setNickname(input);
-
-	std::cout << "Enter phone number: ";
-	std::getline(std::cin, input);
-	setPhoneNumber(input);
-
-	std::cout << "Enter darkest secret: ";
-	std::getline(std::cin, input);
-	setDarkestSecret(input);
-	}
-
-private:
-	std::string firstName;
-	std::string lastName;
-	std::string nickname;
-	std::string phoneNumber;
-	std::string darkestSecret;
-};
-
-class Phonebook {
-public:
-	Phonebook() : index(0) {}
-
-	void add() {
-		if (index < 8) {
-			contacts[index].fillDetails();
-			index++;
-		} else {
-			index = 0;
-		}
-	}
-	void search() {
-		for (int i = 0; i < index; ++i) {
-			std::cout << std::setw(10) << i;
-			std::cout << "|";
-			std::cout << std::setw(10) << contacts[i].getFirstName();
-			std::cout << "|";
-			std::cout << std::setw(10) << contacts[i].getLastName();
-			std::cout << "|";
-			std::cout << std::setw(10) << contacts[i].getNickname();
-			std::cout << std::endl;
-		}
-	}
-private:
-	int index;
-	Contact contacts[8];
-};
-
-int prompt(std::string &input) {
-	std::cout << "phonebook> ";
-	if (!(std::getline(std::cin,input))) {
-		if (std::cin.eof()) {
-			std::cout << "EOF" << std::endl;
-			return (PROMPT_ERROR);
-		}
-	}
-	return (PROMPT_SUCCESS);
 }
 
 int main(void) {
