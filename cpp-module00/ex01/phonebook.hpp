@@ -7,7 +7,7 @@
 
 #define PROMPT_ERROR 1
 #define PROMPT_SUCCESS 0
-#define MAX_CONTACTS 8
+#define MAX_CONTACTS 2
 
 class Contact {
 public:
@@ -44,10 +44,12 @@ public:
 	void add(void);
 	void search(void);
 
-	Phonebook() : contactIndex(0) {}
+	Phonebook() : contactID(0), contactIndex(0), contactsAddedCount(0) {}
 private:
 	Contact contacts[8];
+	int contactID;
 	int contactIndex;
+	int contactsAddedCount;
 };
 
 int prompt(std::string &input);

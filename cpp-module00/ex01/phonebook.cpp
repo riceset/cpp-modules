@@ -1,7 +1,7 @@
 #include "phonebook.hpp"
 
 void Phonebook::search() {
-	for (int i = 0; i < contactIndex; ++i) {
+	for (int i = 0; i < contactsAddedCount; ++i) {
 		std::cout << std::setw(10) << i;
 		std::cout << "|";
 
