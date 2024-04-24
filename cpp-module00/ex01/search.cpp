@@ -12,7 +12,7 @@ void Phonebook::searchID(void) {
 		return ;
 	}
 
-	if (id <= contactIndex) {
+	if (id <= contactIndex - 1) {
 		std::cout << "First name: " << contacts[id].getFirstName() << std::endl;
 		std::cout << "Last name: " << contacts[id].getLastName() << std::endl;
 		std::cout << "Nickname: " << contacts[id].getNickname() << std::endl;
@@ -24,6 +24,9 @@ void Phonebook::searchID(void) {
 }
 
 void Phonebook::search() {
+	if (contactsAddedCount == 0) {
+		return ;
+	}
 	for (int i = 0; i < contactsAddedCount; ++i) {
 		std::cout << std::setw(10) << i;
 		std::cout << "|";
