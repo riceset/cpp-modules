@@ -7,17 +7,11 @@
 
 class Zombie {
 public:
-	void set(std::string str) {
-		name = str;
-	}
+	void set(const std::string& str);
 
-	std::string get() {
-		return (name);
-	}
+	std::string get() const;
 
-	void announce(void) {
-		std::cout << name << ": " << ZOMBIE_MSG << std::endl;
-	}
+	void announce(void) const;
 
 	Zombie() : name("Default") {}
 	Zombie(std::string name) : name(name) {}
