@@ -103,5 +103,20 @@
    "setters.o"
   ],
   "file": "setters.cpp"
+ },
+ {
+  "directory": "/Users/riceset/cpp/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-std=c++98",
+   "-c",
+   "search.cpp",
+   "-o",
+   "search.o"
+  ],
+  "file": "search.cpp"
  }
 ]

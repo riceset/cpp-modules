@@ -1,12 +1,11 @@
 #include "phonebook.hpp"
 
-int prompt(std::string &input) {
-	std::cout << "phonebook> ";
+void prompt(std::string &input, std::string message) {
+	std::cout << message;
 	if (!(std::getline(std::cin,input))) {
 		if (std::cin.eof()) {
 			std::cout << "EOF" << std::endl;
-			return (PROMPT_ERROR);
+			exit(1);
 		}
 	}
-	return (PROMPT_SUCCESS);
 }

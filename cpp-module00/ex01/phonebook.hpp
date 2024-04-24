@@ -4,10 +4,9 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <stdexcept>
 
-#define PROMPT_ERROR 1
-#define PROMPT_SUCCESS 0
-#define MAX_CONTACTS 2
+#define MAX_CONTACTS 8
 
 class Contact {
 public:
@@ -28,7 +27,7 @@ public:
 
 	//Others
 	void fillDetails(void);
-	void promptContact(const std::string prompt, void (Contact::*set)(const std::string&));
+	void promptContact(const std::string message, void (Contact::*set)(const std::string&));
 private:
 	std::string firstName;
 	std::string lastName;
@@ -41,6 +40,7 @@ class Phonebook {
 public:
 	void add(void);
 	void search(void);
+	void searchID(void);
 
 	Phonebook() : contactID(0), contactIndex(0), contactsAddedCount(0) {}
 private:
@@ -50,6 +50,6 @@ private:
 	int contactsAddedCount;
 };
 
-int prompt(std::string &input);
+void prompt(std::string &input, std::string message);
 
 #endif

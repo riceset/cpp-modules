@@ -10,7 +10,8 @@ SRCS = phonebook.cpp \
 	   add.cpp \
 	   formatString.cpp \
 	   getters.cpp \
-	   setters.cpp
+	   setters.cpp \
+	   search.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 
