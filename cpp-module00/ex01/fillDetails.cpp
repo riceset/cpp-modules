@@ -4,7 +4,12 @@ void Contact::promptContact(const std::string prompt, void (Contact::*set)(const
 	std::string input;
 
 	std::cout << prompt;
-	std::getline(std::cin, input);
+	if (!(std::getline(std::cin,input))) {
+		if (std::cin.eof()) {
+			std::cout << "EOF" << std::endl;
+			exit(1);
+		}
+	}
 	(this->*set)(input);
 }
 

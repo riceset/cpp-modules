@@ -7,7 +7,10 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 SRCS = phonebook.cpp \
 	   prompt.cpp \
 	   fillDetails.cpp \
-	   add.cpp
+	   add.cpp \
+	   formatString.cpp \
+	   getters.cpp \
+	   setters.cpp
 
 OBJS = $(SRCS:%.cpp=%.o)
 

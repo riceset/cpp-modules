@@ -11,22 +11,20 @@
 
 class Contact {
 public:
-	std::string formatString(const std::string str) const {
-		return (str.length() > 10 ? str.substr(0, 9) + "." : str);
-	}
+	std::string formatString(const std::string str) const;
 
 	//Getters
-	const std::string& getFirstName() const {return firstName;}
-	const std::string& getLastName() const {return lastName;}
-	const std::string& getNickname() const {return nickname;}
-	const std::string& getPhoneNumber() const {return phoneNumber;}
-	const std::string& getDarkestSecret() const {return darkestSecret;}
+	const std::string& getFirstName() const;
+	const std::string& getLastName() const;
+	const std::string& getNickname() const;
+	const std::string& getPhoneNumber() const;
+	const std::string& getDarkestSecret() const;
 	//Setters
-	void setFirstName(const std::string &value) {firstName = formatString(value);}
-	void setLastName(const std::string &value) {lastName = formatString(value);}
-	void setNickname(const std::string &value) {nickname = formatString(value);}
-	void setPhoneNumber(const std::string &value) {phoneNumber = formatString(value);}
-	void setDarkestSecret(const std::string &value) {darkestSecret = formatString(value);}
+	void setFirstName(const std::string &value);
+	void setLastName(const std::string &value);
+	void setNickname(const std::string &value);
+	void setPhoneNumber(const std::string &value);
+	void setDarkestSecret(const std::string &value);
 
 	//Others
 	void fillDetails(void);

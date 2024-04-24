@@ -1,0 +1,107 @@
+[
+ {
+  "directory": "/Users/riceset/cpp/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-std=c++98",
+   "-c",
+   "phonebook.cpp",
+   "-o",
+   "phonebook.o"
+  ],
+  "file": "phonebook.cpp"
+ },
+ {
+  "directory": "/Users/riceset/cpp/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-std=c++98",
+   "-c",
+   "prompt.cpp",
+   "-o",
+   "prompt.o"
+  ],
+  "file": "prompt.cpp"
+ },
+ {
+  "directory": "/Users/riceset/cpp/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-std=c++98",
+   "-c",
+   "fillDetails.cpp",
+   "-o",
+   "fillDetails.o"
+  ],
+  "file": "fillDetails.cpp"
+ },
+ {
+  "directory": "/Users/riceset/cpp/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-std=c++98",
+   "-c",
+   "add.cpp",
+   "-o",
+   "add.o"
+  ],
+  "file": "add.cpp"
+ },
+ {
+  "directory": "/Users/riceset/cpp/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-std=c++98",
+   "-c",
+   "formatString.cpp",
+   "-o",
+   "formatString.o"
+  ],
+  "file": "formatString.cpp"
+ },
+ {
+  "directory": "/Users/riceset/cpp/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-std=c++98",
+   "-c",
+   "getters.cpp",
+   "-o",
+   "getters.o"
+  ],
+  "file": "getters.cpp"
+ },
+ {
+  "directory": "/Users/riceset/cpp/cpp-module00/ex01",
+  "arguments": [
+   "c++",
+   "-Wall",
+   "-Werror",
+   "-Wextra",
+   "-std=c++98",
+   "-c",
+   "setters.cpp",
+   "-o",
+   "setters.o"
+  ],
+  "file": "setters.cpp"
+ }
+]
