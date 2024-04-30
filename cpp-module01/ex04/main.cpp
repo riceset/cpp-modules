@@ -7,8 +7,9 @@ typedef enum errors {
 	FILE_ERROR
 } errors;
 
-void handleArgs(int argc) {
-	if (argc != 4) {
+void handleArgs(int argc, char **argv) {
+	if (argc != 4 || strcmp(argv[1], "") == 0 || strcmp(argv[2], "") == 0 ||
+	strcmp(argv[3], "") == 0) {
 		std::cout << "usage: ./sedisforlosers <filename> s1 s2" << std::endl;
 		exit(USAGE_ERROR);
 	}
@@ -52,14 +53,15 @@ void replaceAndPrint(const std::string& line, const std::string& toSearch, const
 }
 
 int main(int argc, char **argv) {
+	handleArgs(argc, argv);
+
 	std::string infileName = argv[1];
-	std::string outfileName = infileName + ".replace";
-
 	std::ifstream infile;
-	std::ofstream outfile(outfileName, std::ofstream::out);
 
-	handleArgs(argc);
 	openFile(infileName, infile);
+
+	std::string outfileName = infileName + ".replace";
+	std::ofstream outfile(outfileName, std::ofstream::out);
 
 	std::string line;
 
