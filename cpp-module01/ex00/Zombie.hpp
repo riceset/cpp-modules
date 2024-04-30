@@ -7,14 +7,18 @@
 
 class Zombie {
 public:
-	void set(const std::string& str);
+	//Getters and Setters
+	void setName(const std::string& newName);
+	std::string getName() const;
 
-	std::string get() const;
+	//Methods
+	void announce() const;
 
-	void announce(void) const;
-
+	//Default Constructor
 	Zombie() : name("Default") {}
-	Zombie(std::string name) : name(name) {}
+
+	//Parameterized Constructor
+	explicit Zombie(std::string& newName) : name(newName) {}
 
 private:
 	std::string name;

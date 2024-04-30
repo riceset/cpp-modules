@@ -1,10 +1,10 @@
 #include "Zombie.hpp"
 
-void Zombie::set(const std::string& str) {
-	name = str;
+void Zombie::setName(const std::string& newName) {
+	name = newName;
 }
 
-std::string Zombie::get() const {
+std::string Zombie::getName() const {
 	return (name);
 }
 
