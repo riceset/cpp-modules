@@ -8,7 +8,7 @@ Zombie* newZombie(std::string name) {
 		std::cout << "Error creating zombie!" << std::endl;
 		return (NULL);
 	}
-	z->set(name);
+	z->setName(name);
 
 	return (z);
 }
