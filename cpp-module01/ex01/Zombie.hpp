@@ -12,8 +12,9 @@ public:
 	std::string getName() const;
 	void announce(void) const;
 
-	Zombie() : name("Default") {}
-	Zombie(std::string name) : name(name) {}
+	Zombie();
+
+	explicit Zombie(std::string& newName);
 
 private:
 	std::string name;

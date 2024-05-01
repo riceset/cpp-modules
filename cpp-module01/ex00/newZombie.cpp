@@ -3,12 +3,13 @@
 Zombie* newZombie(std::string name) {
 	Zombie* z;
 
-	z = new Zombie;
-	if (z == NULL) {
-		std::cout << "Error creating zombie!" << std::endl;
-		return (NULL);
+	try {
+		z = new Zombie;
+		z->setName(name);
+	} catch (const std::bad_alloc& e) {
+		std::cout << "Error: " << e.what() << std::endl;
+		return (nullptr);
 	}
-	z->setName(name);
 
 	return (z);
 }

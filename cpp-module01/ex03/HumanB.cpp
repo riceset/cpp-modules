@@ -1,13 +1,14 @@
 #include "HumanB.hpp"
+#include <iostream>
 
-std::string HumanB::getName() const {
+const std::string& HumanB::getName() const {
 	return (name);
 }
 void HumanB::setName(const std::string& newName) {
 	name = newName;
 }
 
-Weapon HumanB::getWeapon() const {
+const Weapon& HumanB::getWeapon() const {
 	return (weapon);
 }
 void HumanB::setWeapon(const Weapon& newWeapon) {
@@ -26,3 +27,5 @@ void HumanB::attack() const {
 	}
 	std::cout << getName() << " attacks with their " << getWeapon().getType() << std::endl;
 }
+
+HumanB::HumanB(const std::string& newName) : name(newName) {}

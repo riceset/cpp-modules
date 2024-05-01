@@ -4,7 +4,7 @@ void randomChump(std::string name) {
 	Zombie* z;
 
 	z = newZombie(name);
-	if (z == NULL) {
+	if (z == nullptr) {
 		return ;
 	}
 	z->announce();

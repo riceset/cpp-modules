@@ -1,7 +1,16 @@
-#include "HumanA.hpp"
 #include "HumanB.hpp"
+#include "HumanA.hpp"
+#include <iostream>
 
 int main(void) {
+	Weapon club = Weapon("crude spiked club");
+
+	HumanB hb = HumanB("Hello");
+
+	hb.setWeapon(club);
+
+	hb.attack();
+
 	{
 		Weapon club = Weapon("crude spiked club");
 

@@ -1,15 +1,17 @@
 #include "HumanA.hpp"
+#include <iostream>
 
-std::string HumanA::getName() const {
+const std::string& HumanA::getName() const {
 	return (name);
 }
 void HumanA::setName(const std::string& newName) {
 	name = newName;
 }
 
-Weapon HumanA::getWeapon() const {
+const Weapon& HumanA::getWeapon() const {
 	return (weapon);
 }
+
 void HumanA::setWeapon(const Weapon& newWeapon) {
 	weapon = newWeapon;
 }
@@ -26,3 +28,7 @@ void HumanA::attack() const {
 	}
 	std::cout << getName() << " attacks with their " << getWeapon().getType() << std::endl;
 }
+
+HumanA::HumanA() : name(""), weapon(Weapon()) {}
+
+HumanA::HumanA(const std::string& newName, const Weapon& newWeapon) : name(newName), weapon(newWeapon) {}

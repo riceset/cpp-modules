@@ -5,22 +5,15 @@
 
 class HumanB {
 public:
-	std::string getName() const;
+	const std::string& getName() const;
 	void setName(const std::string& newName);
 
-	Weapon getWeapon() const;
+	const Weapon& getWeapon() const;
 	void setWeapon(const Weapon& newWeapon);
 
 	void attack() const;
 
-	HumanB() {
-		this->name = "";
-		this->weapon = Weapon();
-	}
-
-	HumanB(const std::string& name) {
-		this->name = name;
-	}
+	HumanB(const std::string& name);
 
 private:
 	std::string name;

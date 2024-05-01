@@ -11,3 +11,7 @@ std::string Zombie::getName() const {
 void Zombie::announce(void) const {
 	std::cout << name << ": " << ZOMBIE_MSG << std::endl;
 }
+
+Zombie::Zombie() : name("") {}
+
+Zombie::Zombie(std::string& newName) : name(newName) {}
