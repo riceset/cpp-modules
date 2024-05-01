@@ -9,15 +9,16 @@ public:
 	void setName(const std::string& newName);
 
 	const Weapon& getWeapon() const;
-	void setWeapon(const Weapon& newWeapon);
+	void setWeapon(Weapon& newWeapon);
 
-	void attack() const;
+	void attack();
 
 	HumanB(const std::string& name);
+	~HumanB();
 
 private:
 	std::string name;
-	Weapon &weapon;
+	Weapon* weapon;
 };
 
 #endif

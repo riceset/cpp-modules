@@ -10,11 +10,14 @@ public:
 
 	void setName(const std::string& str);
 	std::string getName() const;
+
 	void announce(void) const;
 
 	Zombie();
 
 	explicit Zombie(std::string& newName);
+
+	~Zombie();
 
 private:
 	std::string name;

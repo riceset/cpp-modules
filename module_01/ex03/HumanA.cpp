@@ -4,8 +4,9 @@
 const std::string& HumanA::getName() const {
 	return (name);
 }
+
 void HumanA::setName(const std::string& newName) {
-	name = newName;
+	this->name = newName;
 }
 
 const Weapon& HumanA::getWeapon() const {
@@ -13,22 +14,17 @@ const Weapon& HumanA::getWeapon() const {
 }
 
 void HumanA::setWeapon(const Weapon& newWeapon) {
-	weapon = newWeapon;
+	this->weapon = newWeapon;
 }
 
-void HumanA::attack() const {
-	if (getName() == "") {
-		std::cout << "Please provide a name!" << std::endl;
-
-		return ;
-	} else if (getWeapon().getType() == "") {
-		std::cout << "Please provide a weapon!" << std::endl;
-
-		return ;
-	}
-	std::cout << getName() << " attacks with their " << getWeapon().getType() << std::endl;
+void HumanA::attack() {
+	std::cout << this->name << " attacks with their " << this->weapon.getType() << std::endl;
 }
 
-HumanA::HumanA() : name(""), weapon(Weapon()) {}
+HumanA::HumanA(const std::string& newName, Weapon& newWeapon) : name(newName), weapon(newWeapon) {
+	return ;
+}
 
-HumanA::HumanA(const std::string& newName, const Weapon& newWeapon) : name(newName), weapon(newWeapon) {}
+HumanA::~HumanA() {
+	return ;
+}

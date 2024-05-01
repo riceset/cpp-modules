@@ -11,14 +11,14 @@ public:
 	const Weapon& getWeapon() const;
 	void setWeapon(const Weapon& newWeapon);
 
-	void attack() const;
+	void attack();
 
-	HumanA();
-	HumanA(const std::string& name, const Weapon& weapon);
+	HumanA(const std::string& name, Weapon& newWeapon);
+	~HumanA();
 
 private:
 	std::string name;
-	Weapon weapon;
+	Weapon& weapon;
 };
 
 #endif

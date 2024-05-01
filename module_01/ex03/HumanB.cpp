@@ -2,30 +2,29 @@
 #include <iostream>
 
 const std::string& HumanB::getName() const {
-	return (name);
+	return (this->name);
 }
+
 void HumanB::setName(const std::string& newName) {
-	name = newName;
+	this->name = newName;
 }
 
 const Weapon& HumanB::getWeapon() const {
-	return (weapon);
-}
-void HumanB::setWeapon(const Weapon& newWeapon) {
-	weapon = newWeapon;
+	return (*this->weapon);
 }
 
-void HumanB::attack() const {
-	if (getName() == "") {
-		std::cout << "Please provide a name!" << std::endl;
-
-		return ;
-	} else if (getWeapon().getType() == "") {
-		std::cout << "Please provide a weapon!" << std::endl;
-
-		return ;
-	}
-	std::cout << getName() << " attacks with their " << getWeapon().getType() << std::endl;
+void HumanB::setWeapon(Weapon& newWeapon) {
+	this->weapon = &newWeapon;
 }
 
-HumanB::HumanB(const std::string& newName) : name(newName) {}
+void HumanB::attack() {
+	std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+}
+
+HumanB::HumanB(const std::string& newName) : name(newName) {
+	return ;
+}
+
+HumanB::~HumanB() {
+	return ;
+}

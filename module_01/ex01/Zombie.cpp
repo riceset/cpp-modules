@@ -15,3 +15,5 @@ void Zombie::announce(void) const {
 Zombie::Zombie() : name("") {}
 
 Zombie::Zombie(std::string& newName) : name(newName) {}
+
+Zombie::~Zombie() {}
