@@ -18,10 +18,11 @@ void HumanB::setWeapon(Weapon& newWeapon) {
 }
 
 void HumanB::attack() {
-	std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
+	if (this->weapon != NULL)
+		std::cout << this->name << " attacks with their " << this->weapon->getType() << std::endl;
 }
 
-HumanB::HumanB(const std::string& newName) : name(newName) {
+HumanB::HumanB(const std::string& newName) : name(newName), weapon(NULL) {
 	return ;
 }
 

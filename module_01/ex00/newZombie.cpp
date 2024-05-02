@@ -8,7 +8,7 @@ Zombie* newZombie(std::string name) {
 		z->setName(name);
 	} catch (const std::bad_alloc& e) {
 		std::cout << "Error: " << e.what() << std::endl;
-		return (nullptr);
+		return (NULL);
 	}
 
 	return (z);
