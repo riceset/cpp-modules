@@ -8,7 +8,7 @@ int main(void) {
 	horde = zombieHorde(ZOMBIE_COUNT, "xxx");
 
 	for (int i = 0; i < ZOMBIE_COUNT; i++) {
-		std::cout << horde[i].getName() << std::endl;
+		horde[i].announce();
 	}
 
 	delete[] horde;
