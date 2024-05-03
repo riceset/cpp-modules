@@ -1,13 +1,7 @@
 #include "Zombie.hpp"
 
 void randomChump(std::string name) {
-	Zombie* z;
+	Zombie zombie(name);
 
-	z = newZombie(name);
-	if (z == NULL) {
-		return ;
-	}
-	z->announce();
-
-	delete z;
+	zombie.announce();
 }
