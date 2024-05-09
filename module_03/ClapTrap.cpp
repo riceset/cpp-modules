@@ -21,3 +21,47 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 }
 
 ClapTrap::~ClapTrap() {}
+
+const std::string& ClapTrap::getName() {
+	return (name);
+}
+
+unsigned int ClapTrap::getHit() {
+	return (hit);
+}
+
+unsigned int ClapTrap::getEnergy() {
+	return (energy);
+}
+
+unsigned int ClapTrap::getDamage() {
+	return (damage);
+}
+
+void ClapTrap::setName(const std::string& newName) {
+	name = newName;
+}
+
+void ClapTrap::setHit(unsigned int newHit) {
+	hit = newHit;
+}
+
+void ClapTrap::setEnergy(unsigned int newEnergy) {
+	energy = newEnergy;
+}
+
+void ClapTrap::setDamage(unsigned int newDamage) {
+	damage = newDamage;
+}
+
+void ClapTrap::attack(const std::string& target) {
+	(void)target;
+}
+
+void ClapTrap::takeDamage(unsigned int amount) {
+	(void)amount;
+}
+
+void ClapTrap::beRepaired(unsigned int amount) {
+	(void)amount;
+}
