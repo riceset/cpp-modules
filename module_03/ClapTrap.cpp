@@ -1,4 +1,5 @@
 #include "ClapTrap.hpp"
+#include <iostream>
 
 ClapTrap::ClapTrap()
 	: name(""), hit(10), energy(10), damage(0) {}
@@ -55,13 +56,31 @@ void ClapTrap::setDamage(unsigned int newDamage) {
 }
 
 void ClapTrap::attack(const std::string& target) {
-	(void)target;
+	if (energy > 0 && hit > 0) {
+		std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << damage << " points of damage!" << std::endl;
+		energy--;
+
+	} else {
+		std::cout << "ClapTrap " << name << " is out of energy or hit points and cannot attack!" << std::endl;
+	}
 }
 
 void ClapTrap::takeDamage(unsigned int amount) {
-	(void)amount;
+	if (hit > 0) {
+		hit = (amount > hit) ? 0 : (hit - amount);
+		std::cout << "ClapTrap " << name << " takes " << amount << " points of damage!" << std::endl;
+	}
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-	(void)amount;
+	if (energy > 0 && hit > 0) {
+		unsigned int actualRecoveryAmount = (UINT_MAX - hit < amount) ? (UINT_MAX - hit) : amount;
+
+        std::cout << "ClapTrap " << name << " repairs itself, recovering " << actualRecoveryAmount << " hit points!" << std::endl;
+
+		hit += actualRecoveryAmount;
+		energy--;
+	} else {
+		std::cout << "ClapTrap " << name << " is out of energy or hit points and cannot repair itself!" << std::endl;
+	}
 }
