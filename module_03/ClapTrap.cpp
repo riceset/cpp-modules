@@ -2,10 +2,14 @@
 #include <iostream>
 
 ClapTrap::ClapTrap()
-	: name(""), hit(10), energy(10), damage(0) {}
+	: name(""), hit(10), energy(10), damage(0) {
+	std::cout << "Default ClapTrap constructed!" << std::endl;
+}
 
 ClapTrap::ClapTrap(const std::string& newName)
-	: name(newName), hit(10), energy(10), damage(0) {}
+	: name(newName), hit(10), energy(10), damage(0) {
+	std::cout << "ClapTrap " << name << " constructed!" << std::endl;
+}
 
 ClapTrap::ClapTrap(const ClapTrap& other)
 	: name(other.name), hit(other.hit), energy(other.energy), damage(other.damage) {}
@@ -21,7 +25,9 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 	return (*this);
 }
 
-ClapTrap::~ClapTrap() {}
+ClapTrap::~ClapTrap() {
+	std::cout << "ClapTrap " << name << " destroyed!" << std::endl;
+}
 
 const std::string& ClapTrap::getName() {
 	return (name);
