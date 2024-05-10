@@ -1,4 +1,4 @@
-NAME = claptrap
+NAME = clap
 
 CXX = c++
 
