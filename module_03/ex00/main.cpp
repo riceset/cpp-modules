@@ -4,19 +4,19 @@
 int main(void) {
 	ClapTrap object("Jacob");
 
-	std::cout << object.getName() << " " << object.getHit() << " " << object.getEnergy() << " " << object.getDamage() << std::endl;
+	std::cout << object;
 
 	object.attack("Paul");
 
-	std::cout << object.getName() << " " << object.getHit() << " " << object.getEnergy() << " " << object.getDamage() << std::endl;
+	std::cout << object;
 
 	object.beRepaired(UINT_MAX);
 
-	std::cout << object.getName() << " " << object.getHit() << " " << object.getEnergy() << " " << object.getDamage() << std::endl;
-	
+	std::cout << object;
+
 	object.takeDamage(UINT_MAX - 1);
 
-	std::cout << object.getName() << " " << object.getHit() << " " << object.getEnergy() << " " << object.getDamage() << std::endl;
+	std::cout << object;
 
 	return (0);
 }

@@ -8,7 +8,11 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap(const std::string& newName)
 	: name(newName), hit(10), energy(10), damage(0) {
-	std::cout << "ClapTrap " << name << " constructed!" << std::endl;
+	if (name.empty()) {
+		std::cout << "ClapTrap constructed!" << std::endl;
+	} else {
+		std::cout << "ClapTrap " << name << " constructed!" << std::endl;
+	}
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
@@ -26,22 +30,26 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other) {
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap " << name << " destroyed!" << std::endl;
+	if (name.empty()) {
+		std::cout << "ClapTrap destructed!" << std::endl;
+	} else {
+		std::cout << "ClapTrap " << name << " destructed!" << std::endl;
+	}
 }
 
-const std::string& ClapTrap::getName() {
+const std::string& ClapTrap::getName() const {
 	return (name);
 }
 
-unsigned int ClapTrap::getHit() {
+unsigned int ClapTrap::getHit() const {
 	return (hit);
 }
 
-unsigned int ClapTrap::getEnergy() {
+unsigned int ClapTrap::getEnergy() const {
 	return (energy);
 }
 
-unsigned int ClapTrap::getDamage() {
+unsigned int ClapTrap::getDamage() const {
 	return (damage);
 }
 
@@ -63,7 +71,7 @@ void ClapTrap::setDamage(unsigned int newDamage) {
 
 void ClapTrap::attack(const std::string& target) {
 	if (energy > 0 && hit > 0) {
-		std::cout << "ClapTrap " << name << " attacks " << target << ", causing " << damage << " points of damage!" << std::endl;
+		std::cout << "ClapTrap " << name << "attacks " << target << ", causing " << damage << " points of damage!" << std::endl;
 		energy--;
 
 	} else {
@@ -89,4 +97,13 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	} else {
 		std::cout << "ClapTrap " << name << " is out of energy or hit points and cannot repair itself!" << std::endl;
 	}
+}
+
+std::ostream& operator<<(std::ostream &os, const ClapTrap &object) {
+	os << "Name: " << object.getName() << std::endl;
+	os << "Hit: " << object.getHit() << std::endl;
+	os << "Energy: " << object.getEnergy() << std::endl;
+	os << "Damage: " << object.getDamage() << std::endl;
+
+	return (os);
 }
