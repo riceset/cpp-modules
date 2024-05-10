@@ -38,9 +38,32 @@ void ScavTrap::attack(const std::string& target) {
 		energy--;
 
 	} else {
-		std::cout << "ScavTrap " << name << " is out of energy or hit points and cannot attack!" << std::endl;
+		std::cout << "ScavTrap" << space << name << " is out of energy or hit points and cannot attack!" << std::endl;
 	}
 }
+
+void ScavTrap::takeDamage(unsigned int amount) {
+	std::string space = name.empty() ? "" : " ";
+	if (hit > 0) {
+		hit = (amount > hit) ? 0 : (hit - amount);
+		std::cout << "ScavTrap" << space << name << " takes " << amount << " points of damage!" << std::endl;
+	}
+}
+
+void ScavTrap::beRepaired(unsigned int amount) {
+	std::string space = name.empty() ? "" : " ";
+	if (energy > 0 && hit > 0) {
+		unsigned int actualRecoveryAmount = (UINT_MAX - hit < amount) ? (UINT_MAX - hit) : amount;
+
+        std::cout << "ScavTrap" << space << name << " repairs itself, recovering " << actualRecoveryAmount << " hit points!" << std::endl;
+
+		hit += actualRecoveryAmount;
+		energy--;
+	} else {
+		std::cout << "ScavTrap" << space << name << " is out of energy or hit points and cannot repair itself!" << std::endl;
+	}
+}
+
 
 void ScavTrap::guardGate() {
 	std::string space = name.empty() ? "" : " ";
