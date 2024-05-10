@@ -1,8 +1,8 @@
-#include "ClapTrap.hpp"
+#include "FragTrap.hpp"
 #include <iostream>
 
 int main(void) {
-	ClapTrap object("Jacob");
+	FragTrap object("Jacob");
 
 	std::cout << object;
 
@@ -17,6 +17,8 @@ int main(void) {
 	object.takeDamage(UINT_MAX - 1);
 
 	std::cout << object;
+
+	object.highFivesGuys();
 
 	return (0);
 }
