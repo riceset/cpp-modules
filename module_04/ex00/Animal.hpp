@@ -9,14 +9,14 @@ protected:
 public:
 	Animal();
 	Animal(const Animal& other);
-	Animal(const std::string& newType);
+	~Animal();
+
 	Animal& operator=(const Animal& other);
-	virtual ~Animal();
 
 	std::string getType() const;
 	void setType(const std::string& newType);
 
-	virtual void makeSound() const;
+	virtual void makeSound();
 };
 
 #endif
