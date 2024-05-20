@@ -5,6 +5,10 @@ Animal::Animal() : type() {
 	std::cout << "Animal default constructor called!" << std::endl;
 }
 
+Animal::Animal(const std::string& newType) : type(newType) {
+	std::cout << "Animal parameterized constructor called!" << std::endl;
+}
+
 Animal::Animal(const Animal& other) : type(other.type) {
 	std::cout << "Animal copy constructor called!" << std::endl;
 }
@@ -31,6 +35,6 @@ void Animal::setType(const std::string& newType) {
 	type = newType;
 }
 
-void Animal::makeSound() {
+void Animal::makeSound() const {
 	std::cout << "Animal makes a sound!" << std::endl;
 }

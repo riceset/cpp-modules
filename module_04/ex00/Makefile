@@ -4,23 +4,31 @@ CXX = c++
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
+PATH_SRCS = ./sources/
+PATH_INCS = ./includes/
+PATH_OBJS = ./objects/
+
 SRCS = main.cpp \
-	   Animal.cpp \
-	   Dog.cpp \
-	   Cat.cpp
+       Animal.cpp \
+       Dog.cpp \
+       Cat.cpp \
+       WrongAnimal.cpp \
+       WrongCat.cpp
 
 OBJS = $(SRCS:.cpp=.o)
+OBJS := $(addprefix $(PATH_OBJS),$(OBJS))
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+$(PATH_OBJS)%.o: $(PATH_SRCS)%.cpp
+	@mkdir -p $(PATH_OBJS)
+	$(CXX) $(CXXFLAGS) -I$(PATH_INCS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) -r $(PATH_OBJS)
 
 fclean: clean
 	$(RM) $(NAME)

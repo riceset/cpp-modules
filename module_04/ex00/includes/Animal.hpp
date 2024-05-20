@@ -8,15 +8,16 @@ protected:
 	std::string type;
 public:
 	Animal();
+	Animal(const std::string& newType);
 	Animal(const Animal& other);
-	~Animal();
+	virtual ~Animal();
 
 	Animal& operator=(const Animal& other);
 
 	std::string getType() const;
 	void setType(const std::string& newType);
 
-	virtual void makeSound();
+	virtual void makeSound() const;
 };
 
 #endif
