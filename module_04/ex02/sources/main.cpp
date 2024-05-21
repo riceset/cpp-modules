@@ -1,6 +1,4 @@
 #include "Animal.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
 #include <iostream>
@@ -219,99 +217,6 @@ void catTests() {
 
 /* ---------------------------------------------------------------------- */
 
-void wrongCatDefaultConstructorTest() {
-    printInBox("Testing WrongCat Default Constructor", ANSI_COLOR_GREEN);
-    WrongCat cat;
-}
-
-void wrongCatCopyConstructorTest() {
-    printInBox("Testing WrongCat Copy Constructor", ANSI_COLOR_YELLOW);
-    WrongCat cat;
-    WrongCat copy(cat);
-    std::cout << "Original: " << cat.getType() << std::endl;
-    std::cout << "Copied: " << copy.getType() << std::endl;
-}
-
-void wrongCatAssignmentOperatorTest() {
-    printInBox("Testing WrongCat Assignment Operator", ANSI_COLOR_RED);
-    WrongCat c1;
-    WrongCat c2;
-
-    c1.setType("CAT1");
-    c2.setType("CAT2");
-
-    std::cout << "c1 before copy: " << c1.getType() << std::endl;
-    std::cout << "C2 before copy: " << c2.getType() << std::endl;
-
-    c1 = c2;
-
-    std::cout << "c1 after copy: " << c1.getType() << std::endl;
-    std::cout << "C2 after copy: " << c2.getType() << std::endl;
-}
-
-void wrongCatMakeSoundTest() {
-    printInBox("Testing WrongCat makeSound() Method", ANSI_COLOR_BLUE);
-    WrongCat cat;
-    cat.makeSound();
-}
-
-/* ---------------------------------------------------------------------- */
-
-void dynamicWrongCatDefaultConstructorTest() {
-    printInBox("Dynamic WrongCat Default Constructor", ANSI_COLOR_GREEN);
-    WrongCat* cat = new WrongCat();
-    delete cat;
-}
-
-void dynamicWrongCatCopyConstructorTest() {
-    printInBox("Dynamic WrongCat Copy Constructor", ANSI_COLOR_YELLOW);
-    WrongCat* cat = new WrongCat();
-    WrongCat* copy = new WrongCat(*cat);
-    std::cout << "Original: " << cat->getType() << std::endl;
-    std::cout << "Copied: " << copy->getType() << std::endl;
-    delete cat;
-    delete copy;
-}
-
-void dynamicWrongCatAssignmentOperatorTest() {
-    printInBox("Dynamic WrongCat Assignment Operator", ANSI_COLOR_RED);
-    WrongCat* c1 = new WrongCat();
-    WrongCat* c2 = new WrongCat();
-    c1->setType("CAT1");
-    c2->setType("CAT2");
-
-    std::cout << "c1 before copy: " << c1->getType() << std::endl;
-    std::cout << "C2 before copy: " << c2->getType() << std::endl;
-
-    *c1 = *c2;
-
-    std::cout << "c1 after copy: " << c1->getType() << std::endl;
-    std::cout << "C2 after copy: " << c2->getType() << std::endl;
-    delete c1;
-    delete c2;
-}
-
-void dynamicWrongCatMakeSoundTest() {
-    printInBox("Dynamic WrongCat makeSound() Method", ANSI_COLOR_BLUE);
-    WrongCat* cat = new WrongCat();
-    cat->makeSound();
-    delete cat;
-}
-
-
-void wrongCatTests() {
-	wrongCatDefaultConstructorTest();
-	wrongCatCopyConstructorTest();
-	wrongCatAssignmentOperatorTest();
-	wrongCatMakeSoundTest();
-	dynamicWrongCatDefaultConstructorTest();
-	dynamicWrongCatCopyConstructorTest();
-	dynamicWrongCatAssignmentOperatorTest();
-	dynamicWrongCatMakeSoundTest();
-}
-
-/* ---------------------------------------------------------------------- */
-
 void ftAnimalTest() {
     printInBox("42 Animal Test", ANSI_COLOR_MAGENTA);
 	const Animal* j = new Dog();
@@ -327,20 +232,8 @@ void ftAnimalTest() {
 	delete i;
 }
 
-void ftWrongAnimalTest() {
-    printInBox("42 WrongAnimal Test", ANSI_COLOR_CYAN);
-	const WrongAnimal* i = new WrongCat();
-
-	std::cout << i->getType() << " " << std::endl;
-
-	i->makeSound();
-
-	delete i;
-}
-
 void ftTestSuite() {
 	ftAnimalTest();
-	ftWrongAnimalTest();
 }
 
 void basicBrainTest() {
@@ -373,7 +266,6 @@ void brainTestSuite() {
 int main(void) {
 	dogTests();
 	catTests();
-	wrongCatTests();
 	ftTestSuite();
 
 	brainTestSuite();
