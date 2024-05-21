@@ -12,12 +12,12 @@ Cat::Cat() : Animal("Cat") {
 }
 
 Cat::Cat(const Cat& other) : Animal(other.type) {
-    Brain *tmp = new(std::nothrow) Brain(*other.brain);
-    if (tmp == NULL) {
-        std::cerr << "Error allocating memory!" << std::endl;
-        return;
-    }
-    brain = tmp;
+	try {
+		brain = new Brain(*other.brain);
+	} catch (const std::bad_alloc& e) {
+		std::cerr << "Failed to allocate memory: " << e.what() << std::endl;
+		throw ;
+	}
     std::cout << "Cat copy constructor called!" << std::endl;
 }
 
