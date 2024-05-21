@@ -541,6 +541,10 @@ void ftAnimalTest() {
 	i->makeSound();
 	j->makeSound();
 	meta->makeSound();
+
+	delete meta;
+	delete j;
+	delete i;
 }
 
 void ftWrongAnimalTest() {
@@ -552,6 +556,9 @@ void ftWrongAnimalTest() {
 
 	i->makeSound();
 	meta->makeSound();
+
+	delete meta;
+	delete i;
 }
 
 void ftTestSuite() {

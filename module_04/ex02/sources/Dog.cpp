@@ -2,22 +2,22 @@
 #include <iostream>
 
 Dog::Dog() : Animal("Dog") {
-    Brain *tmp = new(std::nothrow) Brain();
-    if (tmp == NULL) {
-        std::cerr << "Error allocating memory!" << std::endl;
-        return;
-    }
-    brain = tmp;
+	try {
+		brain = new Brain();
+	} catch (const std::bad_alloc& e) {
+		std::cerr << "Failed to allocate memory: " << e.what() << std::endl;
+		throw ;
+	}
     std::cout << "Dog default constructor called!" << std::endl;
 }
 
 Dog::Dog(const Dog& other) : Animal(other.type) {
-    Brain *tmp = new(std::nothrow) Brain(*other.brain);
-    if (tmp == NULL) {
-        std::cerr << "Error allocating memory!" << std::endl;
-        return;
-    }
-    brain = tmp;
+	try {
+		brain = new Brain(*other.brain);
+	} catch (const std::bad_alloc& e) {
+		std::cerr << "Failed to allocate memory: " << e.what() << std::endl;
+		throw ;
+	}
     std::cout << "Dog copy constructor called!" << std::endl;
 }
 
@@ -29,13 +29,14 @@ Dog::~Dog() {
 Dog& Dog::operator=(const Dog& other) {
     if (this != &other) {
         Animal::operator=(other);
-        Brain *tmp = new(std::nothrow) Brain(*other.brain);
-        if (tmp == NULL) {
-            std::cerr << "Error allocating memory!" << std::endl;
-            return *this;
+		try {
+			Brain* newBrain = new Brain(*other.brain);
+            delete brain;
+            brain = newBrain;
+        } catch (const std::bad_alloc& e) {
+            std::cerr << "Failed to allocate memory for brain: " << e.what() << std::endl;
+            throw;
         }
-        delete brain;
-        brain = tmp;
     }
     std::cout << "Dog assignment operator called!" << std::endl;
     return *this;

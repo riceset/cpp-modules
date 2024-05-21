@@ -36,7 +36,6 @@ std::string Brain::getIdea(const int pos) const {
 void Brain::setIdea(const int pos, const std::string& idea) {
 	if (0 <= pos && pos < 100) {
 		ideas[pos] = idea;
-	} else {
-		std::cerr << "Invalid position for idea!" << std::endl;
 	}
+	throw std::out_of_range("Invalid position for idea!");
 }
