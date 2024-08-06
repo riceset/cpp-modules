@@ -9,7 +9,8 @@ PATH_INCS = ./includes/
 PATH_OBJS = ./objects/
 
 SRCS = main.cpp \
-	   Bureaucrat.cpp
+	   Bureaucrat.cpp \
+	   Form.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix $(PATH_OBJS),$(OBJS))

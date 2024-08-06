@@ -2,22 +2,22 @@
 #include <iostream>
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(1) {
-	std::cout << "Default Constructor Called!" << std::endl;
+	std::cout << "Bureaucrat Default Constructor Called!" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) {
 	*this = other;
-	std::cout << "Copy Constructor Called!" << std::endl;
+	std::cout << "Bureaucrat Copy Constructor Called!" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Destructor Called!" << std::endl;
+	std::cout << "Bureaucrat Destructor Called!" << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 	if (this != &other)
 		grade = other.grade;
-	std::cout << "Assignment Operator Called!" << std::endl;
+	std::cout << "Bureaucrat Assignment Operator Called!" << std::endl;
 	return (*this);
 }
 
@@ -31,23 +31,23 @@ int Bureaucrat::getGrade() const {
 
 void Bureaucrat::setGrade(int newGrade) {
 	if (newGrade > 150)
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
 	else if (newGrade < 1)
-		throw Bureaucrat::GradeTooHigh();
+		throw Bureaucrat::GradeTooHighException();
 	else
 		grade = newGrade;
 }
 
 void Bureaucrat::incrementGrade() {
 	if (grade <= 1)
-		throw Bureaucrat::GradeTooHigh();
+		throw Bureaucrat::GradeTooHighException();
 	else
 		grade -= 1;
 }
 
 void Bureaucrat::decrementGrade() {
 	if (grade >= 150)
-		throw Bureaucrat::GradeTooLow();
+		throw Bureaucrat::GradeTooLowException();
 	else
 		grade += 1;
 }

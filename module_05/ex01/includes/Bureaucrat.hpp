@@ -21,14 +21,14 @@ public:
 	void incrementGrade();
 	void decrementGrade();
 
-	class GradeTooHigh : public std::exception {
+	class GradeTooHighException : public std::exception {
 	public:
 		virtual const char *what() const throw() {
 			return ("The grade is too high!");
 		}
 	};
 
-	class GradeTooLow : public std::exception {
+	class GradeTooLowException : public std::exception {
 	public:
 		virtual const char *what() const throw() {
 			return ("The grade is too low!");

@@ -2,22 +2,22 @@
 #include <iostream>
 
 Bureaucrat::Bureaucrat() : name("Default"), grade(1) {
-	std::cout << "Default Constructor Called!" << std::endl;
+	std::cout << "Bureaucrat Default Constructor Called!" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &other) {
 	*this = other;
-	std::cout << "Copy Constructor Called!" << std::endl;
+	std::cout << "Bureaucrat Copy Constructor Called!" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Destructor Called!" << std::endl;
+	std::cout << "Bureaucrat Destructor Called!" << std::endl;
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 	if (this != &other)
 		grade = other.grade;
-	std::cout << "Assignment Operator Called!" << std::endl;
+	std::cout << "Bureaucrat Assignment Operator Called!" << std::endl;
 	return (*this);
 }
 
