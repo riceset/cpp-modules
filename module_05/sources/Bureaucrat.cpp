@@ -20,3 +20,15 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
 	std::cout << "Assignment Operator Called!" << std::endl;
 	return (*this);
 }
+
+std::string Bureaucrat::getName() const {
+	return (name);
+}
+
+int Bureaucrat::getGrade() const {
+	return (grade);
+}
+
+void Bureaucrat::setGrade(int newGrade) {
+	grade = newGrade;
+}
