@@ -18,6 +18,9 @@ public:
 
 	void setGrade(int newGrade);
 
+	void incrementGrade();
+	void decrementGrade();
+
 	class GradeTooHigh : public std::exception {
 	public:
 		virtual const char *what() const throw() {
@@ -32,5 +35,7 @@ public:
 		}
 	};
 };
+
+std::ostream &operator<<(std::ostream &os, const Bureaucrat& bureaucrat);
 
 #endif
