@@ -1,58 +1,46 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
+#include <stdlib.h>
 
 void tryIncrement(Bureaucrat &b) {
-	try {
-		b.incrementGrade();
-		std::cout << "Incrementing grade..." << std::endl;
-	} catch (std::exception &e) {
-		std::cerr << e.what() << std::endl;
-	}
+    try {
+        b.incrementGrade();
+        std::cout << "Incrementing grade..." << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
 }
 
 void tryDecrement(Bureaucrat &b) {
-	try {
-		b.decrementGrade();
-		std::cout << "Decrementing grade..." << std::endl;
-	} catch (std::exception &e) {
-		std::cerr << e.what() << std::endl;
-	}
+    try {
+        b.decrementGrade();
+        std::cout << "Decrementing grade..." << std::endl;
+    } catch (std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+void incrementMax(Bureaucrat &b) {
+    for (int i = 0; i < 150; i++) {
+        tryIncrement(b);
+        std::cout << b << std::endl;
+    }
+}
+
+void normalTest(Bureaucrat &b) {
+    std::cout << b << std::endl;
+    tryDecrement(b);
+    std::cout << b << std::endl;
+    tryIncrement(b);
+    std::cout << b << std::endl;
 }
 
 int main(void) {
-	Bureaucrat b1;
+    // Bureaucrat b1;
+    // normalTest(b1);
 
-	b1.setGrade(2);
+    Bureaucrat b2;
+    incrementMax(b2);
 
-	std::cout << b1;
-
-	tryIncrement(b1);
-
-	std::cout << b1;
-
-	tryIncrement(b1);
-
-	std::cout << b1;
-
-	b1.setGrade(149);
-
-	std::cout << b1;
-
-	tryDecrement(b1);
-	
-	std::cout << b1;
-
-	tryDecrement(b1);
-	
-	std::cout << b1;
-
-	try {
-		b1.setGrade(500);
-	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
-	}
-
-	std::cout << b1;
-
-	return (0);
+    return (EXIT_SUCCESS);
 }
