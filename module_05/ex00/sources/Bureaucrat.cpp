@@ -51,11 +51,19 @@ int Bureaucrat::getGrade() const {
 
 //Members
 void Bureaucrat::incrementGrade(int amount) {
-    if (amount <= 0)
+    if (amount < 1)
         throw std::invalid_argument("Amount must be positive!");
     if (grade - amount < 1)
         throw GradeTooHighException();
-        grade -= amount;
+    grade -= amount;
+}
+
+void Bureaucrat::decrementGrade(int amount) {
+    if (amount < 1)
+        throw std::invalid_argument("Amount must be positive!");
+    if (grade + amount > 150)
+        throw GradeTooLowException();
+    grade += amount;
 }
 
 //Exceptions
