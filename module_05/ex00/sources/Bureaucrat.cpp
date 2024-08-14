@@ -7,63 +7,65 @@ static void printMessage(const std::string &name, unsigned int grade, const std:
     std::cout << "Bureaucrat (" + name + ") with grade " + std::to_string(grade) + " was " + action + "!" << std::endl;
 }
 
-static void validateGrade(unsigned int grade) {
-    if (grade < 1)
+static void validateGrade(int _grade) {
+    if (_grade < 1)
         throw Bureaucrat::GradeTooHighException();
-    else if (grade > 150)
+    else if (_grade > 150)
         throw Bureaucrat::GradeTooLowException();
 }
 
 //Orthodox Canonical Form
-Bureaucrat::Bureaucrat() : name("Anthony"), grade(rand() % 150 + 1) {
-    printMessage(name, grade, "created");
+Bureaucrat::Bureaucrat() : _name("Anthony"), _grade(rand() % 150 + 1) {
+    printMessage(_name, _grade, "created");
 }
 
-Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade) {
-    validateGrade(grade);
-    printMessage(name, grade, "created");
+Bureaucrat::Bureaucrat(const std::string _name, int _grade) : _name(_name), _grade(_grade) {
+    validateGrade(_grade);
+    printMessage(_name, _grade, "created");
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.getName()) {
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : _name(copy.getName()) {
     *this = copy;
-    printMessage(name, grade, "copied");
+    printMessage(_name, _grade, "copied");
 }
 
 Bureaucrat::~Bureaucrat() {
-    printMessage(name, grade, "destroyed");
+    printMessage(_name, _grade, "destroyed");
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
     if (this != &other)
-        grade = other.getGrade();
-    printMessage(name, grade, "assigned");
+        _grade = other.getGrade();
+    printMessage(_name, _grade, "assigned");
     return (*this);
 }
 
 //Getters
 const std::string &Bureaucrat::getName() const {
-    return (name);
+    return (_name);
 }
 
 int Bureaucrat::getGrade() const {
-    return (grade);
+    return (_grade);
 }
 
 //Members
 void Bureaucrat::incrementGrade(int amount) {
     if (amount < 1)
         throw std::invalid_argument("Amount must be positive!");
-    if (grade - amount < 1)
+    if (_grade - amount < 1)
         throw GradeTooHighException();
-    grade -= amount;
+    _grade -= amount;
+    std::cout << _name << " grade was incremented by " << amount << ". Current grade is " << _grade << "." << std::endl;
 }
 
 void Bureaucrat::decrementGrade(int amount) {
     if (amount < 1)
         throw std::invalid_argument("Amount must be positive!");
-    if (grade + amount > 150)
+    if (_grade + amount > 150)
         throw GradeTooLowException();
-    grade += amount;
+    _grade += amount;
+    std::cout << _name << " grade was decremented by " << amount << ". Current grade is " << _grade << "." << std::endl;
 }
 
 //Exceptions
