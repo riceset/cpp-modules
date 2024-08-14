@@ -31,4 +31,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+run:
+	@make --silent
+	@./$(NAME)
+
+.PHONY: all clean fclean re run

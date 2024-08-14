@@ -6,38 +6,30 @@
 class Bureaucrat {
 private:
     const std::string name;
-    int grade;
+    unsigned int grade;
 public:
-    //Orthodox Canonical Form
     Bureaucrat();
-    Bureaucrat(const Bureaucrat &other);
+    Bureaucrat(const std::string name, unsigned int grade);
+    Bureaucrat(const Bureaucrat &copy);
     ~Bureaucrat();
     Bureaucrat &operator=(const Bureaucrat &other);
 
-    //Getters
-    std::string getName() const;
-    int getGrade() const;
+    const std::string   &getName() const;
+    int                 getGrade() const;
 
-    //Required
-    void incrementGrade();
-    void decrementGrade();
+    void incrementGrade(unsigned int amount);
+    void decrementGrade(unsigned int amount);
 
-    //Exceptions
     class GradeTooHighException : public std::exception {
     public:
-        virtual const char *what() const throw() {
-            return ("The grade is too high!");
-        }
+        virtual const char *what() const throw();
     };
-
     class GradeTooLowException : public std::exception {
     public:
-        virtual const char *what() const throw() {
-            return ("The grade is too low!");
-        }
+        virtual const char *what() const throw();
     };
 };
 
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &b);
 
 #endif

@@ -1,51 +1,39 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
+#include <string>
 
-Bureaucrat::Bureaucrat() : name("Default"), grade(150) {
-	std::cout << "Bureaucrat Default Constructor Called!" << std::endl;
+static void printMessage(const std::string &name, unsigned int grade, const std::string &action) {
+    std::cout << "Bureaucrat (" + name + ") with grade " + std::to_string(grade) + " was " + action + "!" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other) {
-    *this = other;
+static void validateGrade(unsigned int grade) {
+    if (grade < 1)
+        throw Bureaucrat::GradeTooHighException();
+    else if (grade > 150)
+        throw Bureaucrat::GradeTooLowException();
+}
 
-	std::cout << "Bureaucrat Copy Constructor Called!" << std::endl;
+Bureaucrat::Bureaucrat() : name("Anthony"), grade(rand() % 150 + 1) {
+    printMessage(name, grade, "created");
+}
+
+Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : name(name), grade(grade) {
+    validateGrade(grade);
+    printMessage(name, grade, "created");
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.getName()) {
+    *this = copy;
+    printMessage(name, grade, "copied");
 }
 
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat Destructor Called!" << std::endl;
+    printMessage(name, grade, "destroyed");
 }
 
 Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
     if (this != &other)
-        grade = other.grade;
-
-	std::cout << "Bureaucrat Assignment Operator Called!" << std::endl;
-
+        grade = other.getGrade();
+    printMessage(name, grade, "assigned");
     return (*this);
-}
-
-std::string Bureaucrat::getName() const {
-    return (name);
-}
-
-int Bureaucrat::getGrade() const {
-    return (grade);
-}
-
-void Bureaucrat::incrementGrade() {
-    if (grade <= 1)
-        throw Bureaucrat::GradeTooHighException();
-    grade--;
-}
-
-void Bureaucrat::decrementGrade() {
-    if (grade >= 150)
-        throw Bureaucrat::GradeTooLowException();
-    grade++;
-}
-
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {
-    os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << "." << std::endl;
-
-    return (os);
 }
