@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 
+//Helpers
 static void printMessage(const std::string &name, unsigned int grade, const std::string &action) {
     std::cout << "Bureaucrat (" + name + ") with grade " + std::to_string(grade) + " was " + action + "!" << std::endl;
 }
@@ -13,11 +14,12 @@ static void validateGrade(unsigned int grade) {
         throw Bureaucrat::GradeTooLowException();
 }
 
+//Orthodox Canonical Form
 Bureaucrat::Bureaucrat() : name("Anthony"), grade(rand() % 150 + 1) {
     printMessage(name, grade, "created");
 }
 
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : name(name), grade(grade) {
+Bureaucrat::Bureaucrat(const std::string name, int grade) : name(name), grade(grade) {
     validateGrade(grade);
     printMessage(name, grade, "created");
 }
@@ -36,4 +38,37 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other) {
         grade = other.getGrade();
     printMessage(name, grade, "assigned");
     return (*this);
+}
+
+//Getters
+const std::string &Bureaucrat::getName() const {
+    return (name);
+}
+
+int Bureaucrat::getGrade() const {
+    return (grade);
+}
+
+//Members
+void Bureaucrat::incrementGrade(int amount) {
+    if (amount <= 0)
+        throw std::invalid_argument("Amount must be positive!");
+    if (grade - amount < 1)
+        throw GradeTooHighException();
+        grade -= amount;
+}
+
+//Exceptions
+const char *Bureaucrat::GradeTooHighException::what() const throw() {
+    return ("Grade is too high!");
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw() {
+    return ("Grade is too low!");
+}
+
+//Operator Overload
+std::ostream &operator<<(std::ostream &os, const Bureaucrat &b) {
+    os << "Bureaucrat: " << b.getName() << ": " << b.getGrade() << std::endl;
+    return (os);
 }
