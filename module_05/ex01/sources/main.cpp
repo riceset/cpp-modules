@@ -1,56 +1,64 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 #include <iostream>
-
-static void separator(std::string msg) {
-    std::cout << std::endl << msg << std::endl;
-}
 
 static void generateRandomSeed() {
     std::srand((unsigned int) time(NULL));
 }
 
+void formException() {
+    try {
+        Form f1("Form", -1, 1);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    try {
+        Form f1("Form", 151, 1);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    try {
+        Form f1("Form", 150, 151);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    try {
+        Form f1("Form", 150, -2);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+}
+
+void signException() {
+    Bureaucrat b1("ABC", 6);
+    Bureaucrat b2("XYZ", 2);
+
+    Form f1("F1", 4, 7);
+
+    try {
+        f1.beSigned(b1);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    try {
+        f1.beSigned(b2);
+        std::cout << b2.getName() << " signed " << f1.getName() << "!" << std::endl;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+
+    b1.signForm(f1);
+
+    Bureaucrat b3("DDD", 1);
+    b3.signForm(f1);
+}
+
 int main(void) {
     generateRandomSeed();
-
-    separator("CONSTRUCTORS");
-    Bureaucrat anthony;
-    Bureaucrat richarlison("Richarlison", 1);
-    Bureaucrat mark("Mark", 150);
-    Bureaucrat anthony2(anthony);
-
-    separator("TRY ERRORS");
-    try {
-        Bureaucrat jacob("Jacob", -1);
-    } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try {
-        Bureaucrat jacob("Jacob", 151);
-    } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try {
-        richarlison.incrementGrade(1);
-    } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
-
-    try {
-        mark.decrementGrade(1);
-    } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
-    }
-
-    separator("TRY SUCCESS");
-    std::cout << richarlison;
-    richarlison.decrementGrade(130);
-
-    std::cout << std::endl;
-
-    std::cout << mark;
-    mark.incrementGrade(130);
-
-    separator("DESTRUCTORS");
+    // formException();
+    // signException();
 }

@@ -14,6 +14,10 @@ Form::Form(const std::string &name, const int gradeToSign, const int gradeToExec
     , _isSigned(false)
     , _gradeToSign(gradeToSign)
     , _gradeToExec(gradeToExec) {
+	if (gradeToSign < 1 || gradeToExec < 1)
+		throw GradeTooHighException();
+	else if (gradeToSign > 150 || gradeToExec > 150)
+		throw GradeTooLowException();
     std::cout << "Form " << _name << ": (grade to sign: " << _gradeToSign << ", grade to execute: " << _gradeToExec << ") was created!" << std::endl;
 }
 
@@ -22,19 +26,19 @@ Form::Form(const Form &other)
     , _isSigned(other._isSigned)
     , _gradeToSign(other._gradeToSign)
     , _gradeToExec(other._gradeToExec) {
-    std::cout << "Form " << _name << "was copied!" << std::endl;
+    std::cout << "Form " << _name << " was copied!" << std::endl;
 }
 
 Form &Form::operator=(const Form &other) {
     if (this != &other) {
         _isSigned = other.getIsSigned();
     }
-    std::cout << "Form " << _name << "was assigned!" << std::endl;
+    std::cout << "Form " << _name << " was assigned!" << std::endl;
 	return (*this);
 }
 
 Form::~Form() {
-    std::cout << "Form " << _name << "was destroyed!" << std::endl;
+    std::cout << "Form " << _name << " was destroyed!" << std::endl;
 }
 
 const std::string &Form::getName() const {
@@ -69,5 +73,7 @@ const char *Form::GradeTooLowException::what() const throw() {
 std::ostream &operator<<(std::ostream &os, const Form &f) {
     std::string isSigned = f.getIsSigned() ? "signed" : "unsigned";
 
-    os << "Form" << f.getName() << " (status: " << isSigned << ", grade to sign: " << f.getGradeToSign() << ", grade to execute: " << f.getGradeToExec() << ")" << std::endl;
+    os << "Form " << f.getName() << " (status: " << isSigned << ", grade to sign: " << f.getGradeToSign() << ", grade to execute: " << f.getGradeToExec() << ")" << std::endl;
+
+    return (os);
 }
