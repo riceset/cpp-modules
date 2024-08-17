@@ -10,7 +10,7 @@ PATH_OBJS = ./objects/
 
 SRCS = main.cpp \
 	   Bureaucrat.cpp \
-	   Form.cpp
+	   AForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix $(PATH_OBJS),$(OBJS))
