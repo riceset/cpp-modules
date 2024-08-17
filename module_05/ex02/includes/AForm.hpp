@@ -28,6 +28,7 @@ public:
 
     //Member Functions
     void beSigned(const Bureaucrat &b);
+    virtual void execute(Bureaucrat const &executor) = 0;
 
     //Exceptions
     class GradeTooHighException : public std::exception {
