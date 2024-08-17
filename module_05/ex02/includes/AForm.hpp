@@ -6,7 +6,7 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
 private:
     const std::string   _name;
     bool                _isSigned;
@@ -14,11 +14,11 @@ private:
     const int           _gradeToExec;
 public:
     //Orthodox Canonical Form
-    Form();
-    Form(const std::string &name, const int gradeToSign, const int gradeToExec);
-    Form(const Form &other);
-    Form &operator=(const Form &other);
-    ~Form();
+    AForm();
+    AForm(const std::string &name, const int gradeToSign, const int gradeToExec);
+    AForm(const AForm &other);
+    AForm &operator=(const AForm &other);
+    ~AForm();
 
     //Getters
     const std::string &getName() const;
@@ -40,6 +40,6 @@ public:
     };
 };
 
-std::ostream& operator<<(std::ostream& os, const Form& form);
+std::ostream& operator<<(std::ostream& os, const AForm& form);
 
 #endif
