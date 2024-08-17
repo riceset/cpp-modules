@@ -1,12 +1,13 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
+#include <cstdlib>
 
 static void separator(std::string msg) {
     std::cout << std::endl << msg << std::endl;
 }
 
 static void generateRandomSeed() {
-    std::srand((unsigned int) time(NULL));
+    srand((unsigned int) time(NULL));
 }
 
 int main(void) {

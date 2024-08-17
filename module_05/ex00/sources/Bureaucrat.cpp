@@ -1,10 +1,11 @@
 #include "Bureaucrat.hpp"
 #include <iostream>
 #include <string>
+#include <cstdlib>
 
 //Helpers
 static void printMessage(const std::string &name, unsigned int grade, const std::string &action) {
-    std::cout << "Bureaucrat (" + name + ") with grade " + std::to_string(grade) + " was " + action + "!" << std::endl;
+    std::cout << "Bureaucrat (" << name << ") with grade " << grade << " was " << action << "!" << std::endl;
 }
 
 static void validateGrade(int _grade) {
