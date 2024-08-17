@@ -44,8 +44,13 @@ AForm::~AForm() {
 const std::string &AForm::getName() const {
     return (_name);
 }
+
 bool AForm::getIsSigned() const {
     return (_isSigned);
+}
+
+const std::string &AForm::getTarget() const {
+    return (_target);
 }
 
 int AForm::getGradeToSign() const {

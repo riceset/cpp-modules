@@ -12,6 +12,8 @@ private:
     bool                _isSigned;
     const int           _gradeToSign;
     const int           _gradeToExec;
+protected:
+    std::string _target;
 public:
     //Orthodox Canonical AForm
     AForm();
@@ -23,6 +25,7 @@ public:
     //Getters
     const std::string &getName() const;
     bool getIsSigned() const;
+    const std::string &getTarget() const;
     int getGradeToSign() const;
     int getGradeToExec() const;
 
