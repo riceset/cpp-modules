@@ -26,11 +26,6 @@ public:
     int getGradeToSign() const;
     int getGradeToExec() const;
 
-    //Setters
-
-    void setName(const std::string &name);
-    void setGradeToSign(const int gradeToSign);
-
     //Member Functions
     void beSigned(const Bureaucrat &b);
     virtual void execute(Bureaucrat const &executor) const = 0;
