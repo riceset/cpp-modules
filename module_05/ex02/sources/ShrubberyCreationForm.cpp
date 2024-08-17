@@ -28,3 +28,23 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 ShrubberyCreationForm::~ShrubberyCreationForm() {
     std::cout << "Shrubberly Creation Form destructor called!" << std::endl;
 }
+
+static void draw_tree(int height) {
+    for (int i = 0; i < height; ++i) {
+        for (int j = 0; j < height - i - 1; ++j) {
+            std::cout << " ";
+        }
+        for (int k = 0; k < (2 * i + 1); ++k) {
+            std::cout << "*";
+        }
+        std::cout << std::endl;
+    }
+    for (int i = 0; i < height - 1; ++i) {
+        std::cout << " ";
+    }
+    std::cout << "|" << std::endl;
+}
+
+void ShrubberyCreationForm::execute(const Bureaucrat& executor) const {
+    std::cout << "tree" << std::endl;
+}

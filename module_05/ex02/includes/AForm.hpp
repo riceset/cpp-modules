@@ -9,11 +9,11 @@ class Bureaucrat;
 class AForm {
 private:
     const std::string   _name;
-    bool                _isSigned;
     const int           _gradeToSign;
     const int           _gradeToExec;
 protected:
-    std::string _target;
+    std::string         _target;
+    bool                _isSigned;
 public:
     //Orthodox Canonical AForm
     AForm();
