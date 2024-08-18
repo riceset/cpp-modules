@@ -40,6 +40,17 @@ AForm &AForm::operator=(const AForm &other) {
 AForm::~AForm() {
     std::cout << "AForm " << _name << " was destroyed!" << std::endl;
 }
+void AForm::_assignmentOperatorHelper(const AForm &other) {
+    _isSigned = other.getIsSigned();
+    _target = other.getTarget();
+}
+
+void AForm::_checkExecutionRequirements(const Bureaucrat &executor) const {
+    if (!_isSigned) {
+        throw FormNotSignedException();
+    } if (executor.getGrade() > _gradeToExec)
+        throw GradeTooLowException();
+}
 
 const std::string &AForm::getName() const {
     return (_name);
@@ -56,6 +67,10 @@ int AForm::getGradeToExec() const {
     return (_gradeToExec);
 }
 
+const std::string &AForm::getTarget() const {
+    return (_target);
+}
+
 void AForm::beSigned(const Bureaucrat &b) {
     if (b.getGrade() > getGradeToSign())
         throw GradeTooLowException();
@@ -68,6 +83,10 @@ const char *AForm::GradeTooHighException::what() const throw() {
 
 const char *AForm::GradeTooLowException::what() const throw() {
     return ("Grade is too low!");
+}
+
+const char *AForm::FormNotSignedException::what() const throw() {
+    return ("The form is not signed!");
 }
 
 std::ostream &operator<<(std::ostream &os, const AForm &f) {
