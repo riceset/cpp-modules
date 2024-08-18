@@ -1,5 +1,4 @@
 #include "RobotomyRequestForm.hpp"
-#include <fstream>
 #include <iostream>
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy Request Form", 72, 45) {
@@ -32,5 +31,5 @@ void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 	if (rand() % 2)
 		std::cout << _target << " has been robotomized!" << std::endl;
 	else
-		std::cout << _target << "has not been robotomized..." << std::endl;
+		std::cout << _target << " has not been robotomized..." << std::endl;
 }

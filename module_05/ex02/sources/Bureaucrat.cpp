@@ -68,7 +68,7 @@ void Bureaucrat::decrementGrade(int amount) {
     std::cout << _name << " grade was decremented by " << amount << ". Current grade is " << _grade << "." << std::endl;
 }
 
-void Bureaucrat::signAForm(AForm &f) {
+void Bureaucrat::signForm(AForm &f) {
 	try {
 		f.beSigned(*this);
 	std::cout << _name << " signed " << f.getName() << "." << std::endl;

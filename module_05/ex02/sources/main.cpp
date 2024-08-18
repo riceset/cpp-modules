@@ -1,6 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include <iostream>
 
 static void generateRandomSeed() {
@@ -21,7 +22,7 @@ void testNotAbleToSign() {
     Bureaucrat bob("Bob", 146);
     ShrubberyCreationForm form("garden");
     try {
-        bob.signAForm(form);
+        bob.signForm(form);
         form.execute(bob);
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
@@ -33,7 +34,7 @@ void testNotAbleToExecute() {
     ShrubberyCreationForm form("garden");
 
     try {
-       mark.signAForm(form);
+       mark.signForm(form);
        mark.decrementGrade(10);
        form.execute(mark);
     } catch (const std::exception &e) {
@@ -46,7 +47,7 @@ void testAbleToExecute() {
     ShrubberyCreationForm form("garden");
 
     try {
-        mark.signAForm(form);
+        mark.signForm(form);
        form.execute(mark);
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
@@ -54,16 +55,53 @@ void testAbleToExecute() {
 }
 
 void Robotomization() {
-    Bureaucrat mark("mark", 1);
+    Bureaucrat mark("mark", 44);
     RobotomyRequestForm form("robot");
 
     try {
-        mark.signAForm(form);
+        mark.signForm(form);
        form.execute(mark);
     } catch (const std::exception &e) {
         std::cerr << e.what() << std::endl;
     }
 
+}
+
+void RobotomizationError() {
+    Bureaucrat mark("mark", 46);
+    RobotomyRequestForm form("robot");
+
+    try {
+        mark.signForm(form);
+       form.execute(mark);
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+
+}
+
+void Presidential() {
+    Bureaucrat mark("mark", 1);
+    PresidentialPardonForm form("presidential");
+
+    try {
+        mark.signForm(form);
+       form.execute(mark);
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+}
+
+void PresidentialError() {
+    Bureaucrat mark("mark", 6);
+    PresidentialPardonForm form("presidential");
+
+    try {
+        mark.signForm(form);
+       form.execute(mark);
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
 }
 
 int main(void) {

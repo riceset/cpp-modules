@@ -26,7 +26,8 @@ public:
     //Member Functions
     void incrementGrade(int amount);
     void decrementGrade(int amount);
-    void signAForm(AForm &f);
+    void signForm(AForm &f);
+    void executeForm(const AForm& form);
 
     //Exceptions
     class GradeTooHighException : public std::exception {
