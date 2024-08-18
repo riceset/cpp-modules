@@ -106,6 +106,10 @@ void PresidentialError() {
 
 int main(void) {
     generateRandomSeed();
-    Robotomization();
-    return 0;
+
+    Bureaucrat jason("jason", 1);
+    PresidentialPardonForm form("presidential");
+    jason.signForm(form);
+    jason.executeForm(form);
+    return (0);
 }

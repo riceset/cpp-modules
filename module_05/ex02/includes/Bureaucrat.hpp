@@ -26,7 +26,7 @@ public:
     //Member Functions
     void incrementGrade(int amount);
     void decrementGrade(int amount);
-    void signForm(AForm &f);
+    void signForm(AForm &form);
     void executeForm(const AForm& form);
 
     //Exceptions

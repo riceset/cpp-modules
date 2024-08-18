@@ -68,13 +68,22 @@ void Bureaucrat::decrementGrade(int amount) {
     std::cout << _name << " grade was decremented by " << amount << ". Current grade is " << _grade << "." << std::endl;
 }
 
-void Bureaucrat::signForm(AForm &f) {
+void Bureaucrat::signForm(AForm &form) {
 	try {
-		f.beSigned(*this);
-	std::cout << _name << " signed " << f.getName() << "." << std::endl;
+		form.beSigned(*this);
+	std::cout << _name << " signed " << form.getName() << "." << std::endl;
 	} catch (std::exception &e) {
-		std::cerr << _name << " couldn't sign " << f.getName() << " because " << e.what() << std::endl;
+		std::cerr << _name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
+}
+
+void Bureaucrat::executeForm(const AForm& form) {
+    try {
+        form.execute(*this);
+        std::cout << "Bureaucrat " << _name << " executed form " << form.getName() << std::endl;
+    } catch (std::exception &e) {
+        std::cout << "Bureaucrat " << _name << " could not execute form " << form.getName() << " because " << e.what() << std::endl;
+    }
 }
 
 //Exceptions
