@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include <iostream>
 
 static void generateRandomSeed() {
@@ -52,8 +53,21 @@ void testAbleToExecute() {
     }
 }
 
+void Robotomization() {
+    Bureaucrat mark("mark", 1);
+    RobotomyRequestForm form("robot");
+
+    try {
+        mark.signAForm(form);
+       form.execute(mark);
+    } catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
+    }
+
+}
+
 int main(void) {
     generateRandomSeed();
-    testAbleToExecute();
+    Robotomization();
     return 0;
 }
