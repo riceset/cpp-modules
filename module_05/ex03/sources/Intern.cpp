@@ -1,21 +1,29 @@
 #include "Intern.hpp"
 #include <iostream>
 
+static void printMessage(const std::string &action) {
+    std::cout << "Intern was " << action + "!" << std::endl;
+}
+
 Intern::Intern() {
-    std::cout << "Intern default constructor called!" << std::endl;
+    printMessage("created");
 }
 
 Intern::Intern(const Intern &other) {
     *this = other;
-    std::cout << "Intern parameterized constructor called!" << std::endl;
+    printMessage("copied");
 }
 
 Intern &Intern::operator=(const Intern &other) {
     (void) other;
-    std::cout << "Intern assignment operator called!" << std::endl;
+    printMessage("assigned");
     return (*this);
 }
 
 Intern::~Intern() {
-    std::cout << "Intern destructor called!" << std::endl;
+    printMessage("destroyed");
+}
+
+AForm *Intern::makeForm(const std::string &name, const std::string &target) {
+    
 }
