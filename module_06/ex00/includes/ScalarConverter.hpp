@@ -8,6 +8,7 @@
 #include <cerrno>
 #include <cstdlib>
 #include <cmath>
+#include <functional>
 
 class ScalarConverter {
 public:

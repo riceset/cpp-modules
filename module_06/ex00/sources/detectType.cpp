@@ -16,17 +16,23 @@ static bool detectInt(const std::string &value) {
     return (noError && fullyConverted && withinMinLimit && withinMaxLimit);
 }
 
-static bool detectFloat(const std::string &value) {
-    if (value[value.size() - 1] != 'f' && value[value.size() - 1] != 'F')
-        return (false);
-    std::string floatValue = value.substr(0, value.length() - 1);
+template<typename T>
+static bool detectFloatingPoint(const std::string &value, bool checkForFloatSuffix) {
+    std::string floatValue = value;
+
+    if (checkForFloatSuffix) {
+        if (value[value.size() - 1] != 'f' && value[value.size() - 1] != 'F')
+            return (false);
+        floatValue = value.substr(0, value.length() - 1);
+    }
 
     char *end;
     errno = 0;
-    float floatVal = std::strtof(floatValue.c_str(), &end);
+    T floatVal = (sizeof(T) == sizeof(float)) ? std::strtof(floatValue.c_str(), &end)
+                                              : std::strtod(floatValue.c_str(), &end);
     bool noError = (errno == 0);
     bool fullyConverted = (*end == '\0');
-    bool withinRange = (floatVal != HUGE_VALF && floatVal != -HUGE_VALF);
+    bool withinRange = (floatVal != HUGE_VAL && floatVal != -HUGE_VAL);
 
     bool validCharacters = true;
     bool hasDecimalPoint = false;
@@ -50,9 +56,12 @@ static bool detectFloat(const std::string &value) {
     return (noError && fullyConverted && withinRange && validCharacters);
 }
 
+static bool detectFloat(const std::string &value) {
+    return detectFloatingPoint<float>(value, true);
+}
+
 static bool detectDouble(const std::string &value) {
-    (void)value;
-    return (false);
+    return detectFloatingPoint<double>(value, false);
 }
 
 std::string detectType(const std::string &value) {
