@@ -11,7 +11,8 @@ PATH_OBJS = ./objects/
 SRCS = 	main.cpp \
 		ScalarConverter.cpp \
 		Convert.cpp \
-		Helpers.cpp
+		Helpers.cpp \
+		detectType.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix $(PATH_OBJS),$(OBJS))
