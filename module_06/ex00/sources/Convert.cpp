@@ -1,10 +1,27 @@
 #include "ScalarConverter.hpp"
 
 void ScalarConverter::convert(const std::string &value) {
-    std::string type;
+    Type type;
 
     if (value.empty())
         throw std::invalid_argument("No Input"); 
     type = detectType(value);
-    std::cout << type << std::endl;
+    switch (type) {
+        case CHAR: {
+
+            break;
+        }
+        case INT: {
+
+            break;
+        }
+        case FLOAT: {
+
+            break;
+        }
+        case DOUBLE: {
+
+            break;
+        }
+    }
 }

@@ -2,6 +2,7 @@
 #define SCALAR_CONVERTER_HPP
 
 #include <string>
+#include <sstream>
 #include <stdexcept>
 #include <iostream>
 #include <limits>
@@ -9,6 +10,13 @@
 #include <cstdlib>
 #include <cmath>
 #include <functional>
+
+typedef enum {
+    CHAR,
+    INT,
+    FLOAT,
+    DOUBLE,
+} Type;
 
 class ScalarConverter {
 public:
@@ -21,6 +29,6 @@ private:
 };
 
 void printMessage(const std::string &action);
-std::string detectType(const std::string &value);
+Type detectType(const std::string &value);
 
 #endif
