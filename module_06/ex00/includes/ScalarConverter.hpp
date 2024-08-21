@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <functional>
+#include <iomanip>
 
 typedef enum {
     CHAR,
