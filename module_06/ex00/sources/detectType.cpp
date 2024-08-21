@@ -17,8 +17,37 @@ static bool detectInt(const std::string &value) {
 }
 
 static bool detectFloat(const std::string &value) {
-    (void)value;
-    return (false);
+    if (value[value.size() - 1] != 'f' && value[value.size() - 1] != 'F')
+        return (false);
+    std::string floatValue = value.substr(0, value.length() - 1);
+
+    char *end;
+    errno = 0;
+    float floatVal = std::strtof(floatValue.c_str(), &end);
+    bool noError = (errno == 0);
+    bool fullyConverted = (*end == '\0');
+    bool withinRange = (floatVal != HUGE_VALF && floatVal != -HUGE_VALF);
+
+    bool validCharacters = true;
+    bool hasDecimalPoint = false;
+    bool hasExponent = false;
+    for (size_t i = 0; i < floatValue.length(); ++i) {
+        if (std::isdigit(floatValue[i]) || floatValue[i] == '+' || floatValue[i] == '-') {
+            continue;
+        }
+        if (floatValue[i] == '.' && !hasDecimalPoint) {
+            hasDecimalPoint = true;
+            continue;
+        }
+        if ((floatValue[i] == 'e' || floatValue[i] == 'E') && !hasExponent) {
+            hasExponent = true;
+            continue;
+        }
+        validCharacters = false;
+        break;
+    }
+
+    return (noError && fullyConverted && withinRange && validCharacters);
 }
 
 static bool detectDouble(const std::string &value) {

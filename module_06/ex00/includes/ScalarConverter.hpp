@@ -7,6 +7,7 @@
 #include <limits>
 #include <cerrno>
 #include <cstdlib>
+#include <cmath>
 
 class ScalarConverter {
 public:
