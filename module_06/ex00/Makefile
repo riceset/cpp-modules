@@ -9,7 +9,9 @@ PATH_INCS = ./includes/
 PATH_OBJS = ./objects/
 
 SRCS = 	main.cpp \
-		ScalarConverter.cpp
+		ScalarConverter.cpp \
+		Convert.cpp \
+		Helpers.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix $(PATH_OBJS),$(OBJS))
