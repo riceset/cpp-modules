@@ -2,7 +2,11 @@
 
 void printAlignedValues(char charVal, int intVal, float floatVal, double doubleVal) {
     std::cout << std::left;
-    std::cout << std::setw(8) << "char:" << charVal << std::endl;
+    if (intVal < std::numeric_limits<char>::min() || intVal > std::numeric_limits<char>::max()) {
+        std::cout << std::setw(8) << "char:" << "unsupported" << std::endl;
+    } else {
+        std::cout << std::setw(8) << "char:" << charVal << std::endl;
+    }
     std::cout << std::setw(8) << "int:" << intVal << std::endl;
     std::cout << std::fixed << std::setprecision(1);
     std::cout << std::setw(8) << "float:" << floatVal << "f" << std::endl;
