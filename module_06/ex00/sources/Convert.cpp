@@ -7,14 +7,32 @@ void printAlignedValues(const ConversionValues &cv) {
     } else {
         std::cout << std::setw(8) << "char:" << cv.charVal << std::endl;
     }
+
     if (cv.doubleVal < std::numeric_limits<int>::min() || cv.doubleVal > std::numeric_limits<int>::max()) {
         std::cout << std::setw(8) << "int:" << "impossible" << std::endl;
     } else {
         std::cout << std::setw(8) << "int:" << cv.intVal << std::endl;
     }
-    std::cout << std::fixed << std::setprecision(1);
-    std::cout << std::setw(8) << "float:" << cv.floatVal << "f" << std::endl;
-    std::cout << std::setw(8) << "double:" << cv.doubleVal << std::endl;
+
+    if (std::isinf(cv.floatVal) || std::isnan(cv.floatVal)) {
+        std::cout << std::setw(8) << "float:" << "overflow" << std::endl;
+    } else if (std::fabs(cv.floatVal) > 1e6) {
+        std::cout << std::scientific << std::setprecision(1);
+        std::cout << std::setw(8) << "float:" << cv.floatVal << "f" << std::endl;
+    } else {
+        std::cout << std::fixed << std::setprecision(1);
+        std::cout << std::setw(8) << "float:" << cv.floatVal << "f" << std::endl;
+    }
+
+    if (std::isinf(cv.doubleVal) || std::isnan(cv.doubleVal)) {
+        std::cout << std::setw(8) << "double:" << "overflow" << std::endl;
+    } else if (std::fabs(cv.doubleVal) > 1e6) {
+        std::cout << std::scientific << std::setprecision(1);
+        std::cout << std::setw(8) << "double:" << cv.doubleVal << std::endl;
+    } else {
+        std::cout << std::fixed << std::setprecision(1);
+        std::cout << std::setw(8) << "double:" << cv.doubleVal << std::endl;
+    }
 }
 
 void convertFromChar(const std::string &value) {
