@@ -1,57 +1,48 @@
 #include "ScalarConverter.hpp"
 
 void printChar(const ConversionValues &cv) {
-    std::cout << std::left;
+    std::cout << std::left << std::setw(8) << "char:";
     if (std::isnan(cv.doubleVal)) {
-        std::cout << std::setw(8) << "char:" << "impossible" << std::endl;
+        std::cout << "impossible" << std::endl;
     } else if (!isCharPrintable(cv.charVal)) {
-        std::cout << std::setw(8) << "char:" << "Non displayable" << std::endl;
+        std::cout << "Non displayable" << std::endl;
     } else {
-        std::cout << std::setw(8) << "char:" << "'" << cv.charVal << "'" << std::endl;
+        std::cout << "'" << cv.charVal << "'" << std::endl;
     }
 }
 
 void printInt(const ConversionValues &cv) {
+    std::cout << std::left << std::setw(8) << "int:";
     if (!isIntConvertible(cv.doubleVal) || std::isnan(cv.doubleVal)) {
-        std::cout << std::setw(8) << "int:" << "impossible" << std::endl;
+        std::cout << "impossible" << std::endl;
     } else {
-        std::cout << std::setw(8) << "int:" << cv.intVal << std::endl;
+        std::cout << cv.intVal << std::endl;
     }
 }
 
 void printFloat(const ConversionValues &cv) {
+    std::cout << std::left << std::setw(8) << "float:";
     if (std::isnan(cv.floatVal)) {
-        std::cout << std::setw(8) << "float:" << "nanf" << std::endl;
+        std::cout << "nanf" << std::endl;
     } else if (std::isinf(cv.floatVal)) {
-        if (cv.floatVal > 0) {
-            std::cout << std::setw(8) << "float:" << "+inff" << std::endl;
-        } else {
-            std::cout << std::setw(8) << "float:" << "-inff" << std::endl;
-        }
+        std::cout << (cv.floatVal > 0 ? "+inff" : "-inff") << std::endl;
     } else if (std::fabs(cv.floatVal) > 1e6) {
-        std::cout << std::scientific << std::setprecision(1);
-        std::cout << std::setw(8) << "float:" << cv.floatVal << "f" << std::endl;
+        std::cout << std::scientific << std::setprecision(1) << cv.floatVal << "f" << std::endl;
     } else {
-        std::cout << std::fixed << std::setprecision(1);
-        std::cout << std::setw(8) << "float:" << cv.floatVal << "f" << std::endl;
+        std::cout << std::fixed << std::setprecision(1) << cv.floatVal << "f" << std::endl;
     }
 }
 
 void printDouble(const ConversionValues &cv) {
+    std::cout << std::left << std::setw(8) << "double:";
     if (std::isnan(cv.doubleVal)) {
-        std::cout << std::setw(8) << "double:" << "nan" << std::endl;
+        std::cout << "nan" << std::endl;
     } else if (std::isinf(cv.doubleVal)) {
-        if (cv.doubleVal > 0) {
-            std::cout << std::setw(8) << "double:" << "+inf" << std::endl;
-        } else {
-            std::cout << std::setw(8) << "double:" << "-inf" << std::endl;
-        }
+        std::cout << (cv.doubleVal > 0 ? "+inf" : "-inf") << std::endl;
     } else if (std::fabs(cv.doubleVal) > 1e6) {
-        std::cout << std::scientific << std::setprecision(1);
-        std::cout << std::setw(8) << "double:" << cv.doubleVal << std::endl;
+        std::cout << std::scientific << std::setprecision(1) << cv.doubleVal << std::endl;
     } else {
-        std::cout << std::fixed << std::setprecision(1);
-        std::cout << std::setw(8) << "double:" << cv.doubleVal << std::endl;
+        std::cout << std::fixed << std::setprecision(1) << cv.doubleVal << std::endl;
     }
 }
 
