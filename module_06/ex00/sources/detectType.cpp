@@ -21,6 +21,11 @@ static bool detectFloatingPoint(const std::string &value, bool checkForFloatSuff
         floatValue = value.substr(0, value.length() - 1);
     }
 
+    if (floatValue == "nan" || floatValue == "+inf" || floatValue == "-inf" ||
+        floatValue == "nanf" || floatValue == "+inff" || floatValue == "-inff") {
+        return true;
+    }
+
     std::stringstream ss(floatValue);
     T floatVal;
     ss >> floatVal;

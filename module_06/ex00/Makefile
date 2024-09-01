@@ -12,7 +12,9 @@ SRCS = 	main.cpp \
 		ScalarConverter.cpp \
 		Convert.cpp \
 		Helpers.cpp \
-		detectType.cpp
+		detectType.cpp \
+		Print.cpp \
+		ConversionConditions.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix $(PATH_OBJS),$(OBJS))

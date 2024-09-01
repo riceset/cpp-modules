@@ -39,4 +39,15 @@ private:
 void printMessage(const std::string &action);
 Type detectType(const std::string &value);
 
+bool isCharPrintable(char c);
+bool isIntConvertible(double d);
+bool isFloatOverflow(float f);
+bool isDoubleOverflow(double d);
+
+void printChar(const ConversionValues &cv);
+void printInt(const ConversionValues &cv);
+void printFloat(const ConversionValues &cv);
+void printDouble(const ConversionValues &cv);
+void printAlignedValues(const ConversionValues &cv);
+
 #endif
