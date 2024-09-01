@@ -1,20 +1,40 @@
 #include "ScalarConverter.hpp"
 
-void printAlignedValues(const ConversionValues &cv) {
+bool isCharPrintable(char c) {
+    return isprint(static_cast<unsigned char>(c));
+}
+
+bool isIntConvertible(double d) {
+    return d >= std::numeric_limits<int>::min() && d <= std::numeric_limits<int>::max();
+}
+
+bool isFloatOverflow(float f) {
+    return std::isinf(f) || std::isnan(f);
+}
+
+bool isDoubleOverflow(double d) {
+    return std::isinf(d) || std::isnan(d);
+}
+
+void printChar(const ConversionValues &cv) {
     std::cout << std::left;
-    if (!isprint(static_cast<unsigned char>(cv.charVal))) {
+    if (!isCharPrintable(cv.charVal)) {
         std::cout << std::setw(8) << "char:" << "non printable" << std::endl;
     } else {
         std::cout << std::setw(8) << "char:" << cv.charVal << std::endl;
     }
+}
 
-    if (cv.doubleVal < std::numeric_limits<int>::min() || cv.doubleVal > std::numeric_limits<int>::max()) {
+void printInt(const ConversionValues &cv) {
+    if (!isIntConvertible(cv.doubleVal)) {
         std::cout << std::setw(8) << "int:" << "impossible" << std::endl;
     } else {
         std::cout << std::setw(8) << "int:" << cv.intVal << std::endl;
     }
+}
 
-    if (std::isinf(cv.floatVal) || std::isnan(cv.floatVal)) {
+void printFloat(const ConversionValues &cv) {
+    if (isFloatOverflow(cv.floatVal)) {
         std::cout << std::setw(8) << "float:" << "overflow" << std::endl;
     } else if (std::fabs(cv.floatVal) > 1e6) {
         std::cout << std::scientific << std::setprecision(1);
@@ -23,8 +43,10 @@ void printAlignedValues(const ConversionValues &cv) {
         std::cout << std::fixed << std::setprecision(1);
         std::cout << std::setw(8) << "float:" << cv.floatVal << "f" << std::endl;
     }
+}
 
-    if (std::isinf(cv.doubleVal) || std::isnan(cv.doubleVal)) {
+void printDouble(const ConversionValues &cv) {
+    if (isDoubleOverflow(cv.doubleVal)) {
         std::cout << std::setw(8) << "double:" << "overflow" << std::endl;
     } else if (std::fabs(cv.doubleVal) > 1e6) {
         std::cout << std::scientific << std::setprecision(1);
@@ -33,6 +55,13 @@ void printAlignedValues(const ConversionValues &cv) {
         std::cout << std::fixed << std::setprecision(1);
         std::cout << std::setw(8) << "double:" << cv.doubleVal << std::endl;
     }
+}
+
+void printAlignedValues(const ConversionValues &cv) {
+    printChar(cv);
+    printInt(cv);
+    printFloat(cv);
+    printDouble(cv);
 }
 
 void convertFromChar(const std::string &value) {
