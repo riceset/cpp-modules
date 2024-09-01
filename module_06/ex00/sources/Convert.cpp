@@ -1,65 +1,67 @@
 #include "ScalarConverter.hpp"
 
-void printAlignedValues(char charVal, int intVal, float floatVal, double doubleVal) {
+void printAlignedValues(const ConversionValues &cv) {
     std::cout << std::left;
-    if (intVal < 33 || intVal > 126) {
+    if (!isprint(static_cast<unsigned char>(cv.charVal))) {
         std::cout << std::setw(8) << "char:" << "non printable" << std::endl;
     } else {
-        std::cout << std::setw(8) << "char:" << charVal << std::endl;
+        std::cout << std::setw(8) << "char:" << cv.charVal << std::endl;
     }
-    if (doubleVal < std::numeric_limits<int>::min() || doubleVal > std::numeric_limits<int>::max()) {
+    if (cv.doubleVal < std::numeric_limits<int>::min() || cv.doubleVal > std::numeric_limits<int>::max()) {
         std::cout << std::setw(8) << "int:" << "impossible" << std::endl;
     } else {
-        std::cout << std::setw(8) << "int:" << intVal << std::endl;
+        std::cout << std::setw(8) << "int:" << cv.intVal << std::endl;
     }
     std::cout << std::fixed << std::setprecision(1);
-    std::cout << std::setw(8) << "float:" << floatVal << "f" << std::endl;
-    std::cout << std::setw(8) << "double:" << doubleVal << std::endl;
+    std::cout << std::setw(8) << "float:" << cv.floatVal << "f" << std::endl;
+    std::cout << std::setw(8) << "double:" << cv.doubleVal << std::endl;
 }
 
 void convertFromChar(const std::string &value) {
-    char charVal = value[0];
-    int intVal = static_cast<int>(charVal);
-    float floatVal = static_cast<float>(charVal);
-    double doubleVal = static_cast<double>(charVal);
+    ConversionValues cv;
 
-    printAlignedValues(charVal, intVal, floatVal, doubleVal);
+    cv.charVal = value[0];
+    cv.intVal = static_cast<int>(cv.charVal);
+    cv.floatVal = static_cast<float>(cv.charVal);
+    cv.doubleVal = static_cast<double>(cv.charVal);
+
+    printAlignedValues(cv);
 }
 
 void convertFromInt(const std::string &value) {
     std::stringstream ss(value);
-    int intVal;
-    ss >> intVal;
+    ConversionValues cv;
 
-    char charVal = static_cast<char>(intVal);
-    float floatVal = static_cast<float>(intVal);
-    double doubleVal = static_cast<double>(intVal);
+    ss >> cv.intVal;
+    cv.charVal = static_cast<char>(cv.intVal);
+    cv.floatVal = static_cast<float>(cv.intVal);
+    cv.doubleVal = static_cast<double>(cv.intVal);
 
-    printAlignedValues(charVal, intVal, floatVal, doubleVal);
+    printAlignedValues(cv);
 }
 
 void convertFromFloat(const std::string &value) {
     std::stringstream ss(value);
-    float floatVal;
-    ss >> floatVal;
+    ConversionValues cv;
 
-    char charVal = static_cast<char>(floatVal);
-    int intVal = static_cast<int>(floatVal);
-    double doubleVal = static_cast<double>(floatVal);
+    ss >> cv.floatVal;
+    cv.charVal = static_cast<char>(cv.floatVal);
+    cv.intVal = static_cast<int>(cv.floatVal);
+    cv.doubleVal = static_cast<double>(cv.floatVal);
 
-    printAlignedValues(charVal, intVal, floatVal, doubleVal);
+    printAlignedValues(cv);
 }
 
 void convertFromDouble(const std::string &value) {
     std::stringstream ss(value);
-    double doubleVal;
-    ss >> doubleVal;
+    ConversionValues cv;
 
-    char charVal = static_cast<char>(doubleVal);
-    int intVal = static_cast<int>(doubleVal);
-    float floatVal = static_cast<float>(doubleVal);
+    ss >> cv.doubleVal;
+    cv.charVal = static_cast<char>(cv.doubleVal);
+    cv.intVal = static_cast<int>(cv.doubleVal);
+    cv.floatVal = static_cast<float>(cv.doubleVal);
 
-    printAlignedValues(charVal, intVal, floatVal, doubleVal);
+    printAlignedValues(cv);
 }
 
 void ScalarConverter::convert(const std::string &value) {

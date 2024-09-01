@@ -19,6 +19,13 @@ typedef enum {
     DOUBLE,
 } Type;
 
+struct ConversionValues {
+    char charVal;
+    int intVal;
+    float floatVal;
+    double doubleVal;
+};
+
 class ScalarConverter {
 public:
     static void convert(const std::string &value);
