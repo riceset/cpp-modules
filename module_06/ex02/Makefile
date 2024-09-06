@@ -11,7 +11,8 @@ PATH_OBJS = ./objects/
 SRCS = 	main.cpp \
 		Base.cpp \
 		generate.cpp \
-		identify.cpp
+		identify.cpp \
+		generateRandomSeed.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 OBJS := $(addprefix $(PATH_OBJS),$(OBJS))
