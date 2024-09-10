@@ -18,6 +18,11 @@ void swapTest() {
     std::cout << g << std::endl << h << std::endl;
     swap(g,h);
     std::cout << g << std::endl << h << std::endl;
+
+    std::string s = "hello1", t = "hello2";
+    std::cout << s << std::endl << t << std::endl;
+    ::swap(s,t);
+    std::cout << s << std::endl << t << std::endl;
 }
 
 void minTest() {
@@ -38,6 +43,9 @@ void minTest() {
 
     float g = 3.4, h = 4.5;
     std::cout << min(g, h) << std::endl;
+
+    std::string s = "hello1", t = "hello2";
+    std::cout << ::min(s, t) << std::endl;
 }
 
 void maxTest() {
@@ -58,6 +66,9 @@ void maxTest() {
 
     float g = 3.4, h = 4.5;
     std::cout << max(g, h) << std::endl;
+
+    std::string s = "hello1", t = "hello2";
+    std::cout << ::max(s, t) << std::endl;
 }
 
 int main(void) {
