@@ -4,10 +4,9 @@
 int main(void) {
     generateRandomSeed();
 
-    Base *generatedType = generate();
-
-    identify(generatedType);
-    identify(*generatedType);
+    Base *b = generate();
+    identify(b);
+    identify(*b);
 
     return (0);
 }

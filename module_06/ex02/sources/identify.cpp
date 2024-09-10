@@ -3,31 +3,29 @@
 #include "B.hpp"
 #include "C.hpp"
 
-void identify(Base *p) {
-    if (dynamic_cast<A*>(p))
-        std::cout << "A" << std::endl;
-    else if (dynamic_cast<B*>(p))
-        std::cout << "B" << std::endl;
-    else if (dynamic_cast<C*>(p))
-        std::cout << "C" << std::endl;
-    else
-        std::cout << "Unknown" << std::endl;
-}
-
 template <typename T>
-bool tryIdentify(Base &p, const std::string &typeName) {
-    try {
-        dynamic_cast<T&>(p);
-        std::cout << typeName << std::endl;
-        return (true);
-    } catch (const std::bad_cast& err) {
-        return (false);
+void castByPointer(Base *p, std::string message) {
+    if (dynamic_cast<T*>(p)) {
+        std::cout << message << std::endl;
     }
 }
 
+template <typename T>
+void castByReference(Base &p, std::string message) {
+    try {
+        T t = dynamic_cast<T&>(p);
+        std::cout << message << std::endl;
+    } catch (std::exception &e) {}
+}
+
+void identify(Base *p) {
+    castByPointer<A>(p, "A");
+    castByPointer<B>(p, "B");
+    castByPointer<C>(p, "C");
+}
+
 void identify(Base &p) {
-    if (tryIdentify<A>(p, "A")) return ;
-    if (tryIdentify<B>(p, "B")) return ;
-    if (tryIdentify<C>(p, "C")) return ;
-    std::cout << "Unknown" << std::endl;
+    castByReference<A>(p, "A");
+    castByReference<B>(p, "B");
+    castByReference<C>(p, "C");
 }
