@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
+#include <algorithm>
+#include <numeric>
 
 typedef unsigned int uint;
 
@@ -22,6 +24,9 @@ public:
     ~Span();
 
     void addNumber(int number);
+    int shortestSpan();
+    int longestSpan();
+
     void printVector();
 };
 

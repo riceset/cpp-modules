@@ -11,5 +11,8 @@ int main(void) {
 
     sp.printVector();
 
+    std::cout << sp.longestSpan() << std::endl;
+    std::cout << sp.shortestSpan() << std::endl;
+
     return (0);
 }
