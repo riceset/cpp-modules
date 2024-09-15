@@ -9,5 +9,7 @@ int main(void) {
     sp.addNumber(9);
     sp.addNumber(11);
 
+    sp.printVector();
+
     return (0);
 }

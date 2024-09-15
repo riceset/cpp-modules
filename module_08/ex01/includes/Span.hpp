@@ -2,6 +2,7 @@
 #define SPAN_HPP
 
 #include <vector>
+#include <iostream>
 #include <stdexcept>
 
 typedef unsigned int uint;
@@ -21,6 +22,7 @@ public:
     ~Span();
 
     void addNumber(int number);
+    void printVector();
 };
 
 #endif

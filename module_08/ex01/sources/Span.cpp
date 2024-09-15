@@ -22,3 +22,13 @@ void Span::addNumber(int number) {
         throw std::out_of_range(FULL_ERROR);
     _vector.push_back(number);
 }
+
+void Span::printVector() {
+    typedef std::vector<int>::iterator Iterator;
+    for (Iterator it = _vector.begin(); it != _vector.end(); ++it) {
+        std::cout << *it;
+        if (it != _vector.end() - 1)
+            std::cout << ", ";
+    }
+    std::cout << std::endl;
+}
