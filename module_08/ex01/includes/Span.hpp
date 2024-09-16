@@ -6,6 +6,7 @@
 #include <stdexcept>
 #include <algorithm>
 #include <numeric>
+#include <ctime>
 
 typedef unsigned int uint;
 
@@ -24,6 +25,7 @@ public:
     ~Span();
 
     void addNumber(int number);
+    void addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end);
     int shortestSpan();
     int longestSpan();
 

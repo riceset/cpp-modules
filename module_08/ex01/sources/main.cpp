@@ -1,6 +1,6 @@
 #include "Span.hpp"
 
-int main(void) {
+void pdfTest() {
     Span sp = Span(5);
 
     sp.addNumber(6);
@@ -13,6 +13,9 @@ int main(void) {
 
     std::cout << sp.longestSpan() << std::endl;
     std::cout << sp.shortestSpan() << std::endl;
+}
 
+int main(void) {
+    Span
     return (0);
 }

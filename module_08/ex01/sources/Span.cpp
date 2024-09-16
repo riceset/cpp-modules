@@ -23,6 +23,12 @@ void Span::addNumber(int number) {
     _vector.push_back(number);
 }
 
+void Span::addNumbers(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
+    if (_vector.size() > _size)
+        throw std::out_of_range(FULL_ERROR);
+    _vector.insert(_vector.end(), begin, end);
+}
+
 int Span::shortestSpan() {
     if (_vector.size() < 2)
         throw std::out_of_range(SIZE_ERROR);
