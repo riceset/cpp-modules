@@ -5,10 +5,21 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <limits>
+
+enum conversionError {
+    SUCCESS,
+    NEGATIVE,
+    NO_ENTRY,
+    TOO_LARGE
+};
 
 struct ExchangeRate {
     std::string date;
     double rate;
+    conversionError err;
+
+    ExchangeRate() : date(""), rate(0.0), err(SUCCESS) {}
 };
 
 std::vector<ExchangeRate> readData(const std::string& filename);

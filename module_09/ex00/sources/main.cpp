@@ -3,7 +3,15 @@
 
 void printRates(const std::vector<ExchangeRate>& rates) {
     for (size_t i = 0; i < rates.size(); ++i) {
-        std::cout << "Date: " << rates[i].date << ", Rate: " << std::fixed << std::setprecision(2) << rates[i].rate << std::endl;
+        if (rates[i].err == NEGATIVE)
+            std::cout << "Error: not a positive number." << std::endl;
+        else if (rates[i].err == NO_ENTRY) {
+            std::cout << "Error: bad input => " << rates[i].date << std::endl;
+        }
+        else if (rates[i].err == TOO_LARGE)
+            std::cout << "Error: too large a number." << std::endl;
+        else
+            std::cout << "Date: " << rates[i].date << ", Rate: " << std::fixed << std::setprecision(2) << rates[i].rate << std::endl;
     }
 }
 
