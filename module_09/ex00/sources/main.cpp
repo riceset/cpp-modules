@@ -1,17 +1,36 @@
 #include "BitcoinExchange.hpp"
 #include <iomanip>
 
-void printRates(const std::vector<ExchangeRate>& rates) {
+static bool hasError(conversionError err, const std::string& date) {
+    if (err == NEGATIVE) {
+        std::cout << "Error: not a positive number." << std::endl;
+        return (true);
+    } else if (err == NO_ENTRY) {
+        std::cout << "Error: bad input => " << date << std::endl;
+        return (true);
+    } else if (err == TOO_LARGE) {
+        std::cout << "Error: too large a number." << std::endl;
+        return (true);
+    }
+    return (false);
+}
+
+double calculate(const ExchangeRate& value, const std::vector<ExchangeRate>& rates) {
     for (size_t i = 0; i < rates.size(); ++i) {
-        if (rates[i].err == NEGATIVE)
-            std::cout << "Error: not a positive number." << std::endl;
-        else if (rates[i].err == NO_ENTRY) {
-            std::cout << "Error: bad input => " << rates[i].date << std::endl;
-        }
-        else if (rates[i].err == TOO_LARGE)
-            std::cout << "Error: too large a number." << std::endl;
-        else
-            std::cout << "Date: " << rates[i].date << ", Rate: " << std::fixed << std::setprecision(2) << rates[i].rate << std::endl;
+        if (rates[i].date == value.date) {
+            return (value.rate * rates[i].rate);
+        } else if (rates[i].date > value.date)
+            return (value.rate * rates[i - 1].rate);
+    }
+    return (0);
+}
+
+void printRates(const std::vector<ExchangeRate>& values, const std::vector<ExchangeRate>& rates) {
+    for (size_t i = 0; i < values.size(); ++i) {
+        if (hasError(values[i].err, values[i].date))
+            continue;
+
+        std::cout << values[i].date << "=> " << values[i].rate << " = " << calculate(values[i], rates) << std::endl;
     }
 }
 
@@ -24,9 +43,9 @@ std::string parseInfile(int argc, char **argv) {
 int main(int argc, char **argv) {
     try {
         std::string filename = parseInfile(argc, argv);
-        std::vector<ExchangeRate> outfile = readData(filename);
+        std::vector<ExchangeRate> values = readData(filename);
         std::vector<ExchangeRate> rates = readData("data.csv");
-        printRates(outfile);
+        printRates(values, rates);
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
     }
