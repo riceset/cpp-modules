@@ -19,15 +19,29 @@ MutantStack& MutantStack<T>::operator=(const MutantStack& other) {
 template <typename T>
 MutantStack<T>::~MutantStack() {}
 
-// template <typename T>
-// void MutantStack::push(const T& value) {
-//     stack.push_back(value);
-// }
+template <typename T>
+void MutantStack<T>::push(const T& value) {
+    stack.push_back(value);
+}
 
-// template <typename T>
-// void MutantStack::pop() {
-//     if (!stack.empty())
-//         stack.pop_back();
-// }
+template <typename T>
+void MutantStack<T>::pop() {
+    stack.pop_back();
+}
+
+template <typename T>
+const T& MutantStack<T>::top() const {
+    return (stack.back());
+}
+
+template <typename T>
+bool MutantStack<T>::empty() {
+    return (stack.empty());
+}
+
+template <typename T>
+size_t MutantStack<T>::size() {
+    return (stack.size());
+}
 
 #endif
