@@ -28,28 +28,49 @@ void createStringStreamFromArgs(int argc, char **argv, std::stringstream &ss) {
         ss << argv[i] << " ";
 }
 
-template <typename T>
-void createList(std::stringstream &ss, std::list<T> &list) {
+int evaluateRPN(std::stringstream &ss) {
+    std::stack<int> stack;
     std::string token;
-    while (ss >> token)
-        list.push_back(token);
-}
 
-template <typename T>
-void printList(std::list<T> list) {
-    typename std::list<T>::const_iterator it;
-    for (it = list.begin(); it != list.end(); ++it)
-        std::cout << *it << std::endl;
+    while (ss >> token) {
+        if (isNumber(token)) {
+            stack.push(std::atoi(token.c_str()));
+        } else if (isOperator(token)) {
+            if (stack.size() < 2) {
+                std::cerr << "rpn: insufficient operands for operator '" << token << "'" << std::endl;
+                exit(EXIT_FAILURE);
+            }
+            int b = stack.top(); stack.pop();
+            int a = stack.top(); stack.pop();
+            if (token == "+") stack.push(a + b);
+            else if (token == "-") stack.push(a - b);
+            else if (token == "*") stack.push(a * b);
+            else if (token == "/") {
+                if (b == 0) {
+                    std::cerr << "rpn: division by zero" << std::endl;
+                    exit(EXIT_FAILURE);
+                }
+                stack.push(a / b);
+            }
+        } else {
+            std::cerr << "rpn: invalid token '" << token << "'" << std::endl;
+            exit(EXIT_FAILURE);
+        }
+    }
+    if (stack.size() != 1) {
+        std::cerr << "rpn: invalid expression" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+    return (stack.top());
 }
 
 int main(int argc, char **argv) {
-    std::list<std::string> list;
     std::stringstream ss;
 
     if (!validInput(argc, argv))
         return (EXIT_FAILURE);
+
     createStringStreamFromArgs(argc, argv, ss);
-    createList(ss, list);
-    printList<std::string>(list);
+    std::cout << "Result: " << evaluateRPN(ss) << std::endl;
     return (EXIT_SUCCESS);
 }

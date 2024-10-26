@@ -4,6 +4,6 @@
 #include <cstdlib>
 #include <iostream>
 #include <sstream>
-#include <list>
+#include <stack>
 
 #endif
