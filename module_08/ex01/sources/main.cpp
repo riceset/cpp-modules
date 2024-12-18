@@ -16,6 +16,6 @@ void pdfTest() {
 }
 
 int main(void) {
-    Span
+	pdfTest();
     return (0);
 }

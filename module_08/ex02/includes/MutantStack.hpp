@@ -2,10 +2,11 @@
 #define MUTANT_STACK_HPP
 
 #include <deque>
+#include <stack>
 #include <cstddef>
 
 template <typename T>
-class MutantStack {
+class MutantStack : public std::stack<T> {
 public:
     MutantStack();
     MutantStack(const MutantStack& other);
