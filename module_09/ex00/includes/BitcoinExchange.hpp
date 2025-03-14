@@ -12,7 +12,8 @@ enum conversionError {
     SUCCESS,
     NEGATIVE,
     NO_ENTRY,
-    TOO_LARGE
+    TOO_LARGE,
+    INVALID_DATE
 };
 
 struct ExchangeRate {
@@ -23,6 +24,6 @@ struct ExchangeRate {
     ExchangeRate() : date(""), rate(0.0), err(SUCCESS) {}
 };
 
-std::vector<ExchangeRate> readData(const std::string& filename);
+std::vector<ExchangeRate> readData(const std::string& filename, bool isInputFile);
 
 #endif

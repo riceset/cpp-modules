@@ -11,6 +11,9 @@ static bool hasError(conversionError err, const std::string& date) {
     } else if (err == TOO_LARGE) {
         std::cout << "Error: too large a number." << std::endl;
         return (true);
+    } else if (err == INVALID_DATE) {
+        std::cout << "Error: invalid date => " << date << std::endl;
+        return (true);
     }
     return (false);
 }
@@ -43,8 +46,8 @@ std::string parseInfile(int argc, char **argv) {
 int main(int argc, char **argv) {
     try {
         std::string filename = parseInfile(argc, argv);
-        std::vector<ExchangeRate> values = readData(filename);
-        std::vector<ExchangeRate> rates = readData("data.csv");
+        std::vector<ExchangeRate> values = readData(filename, true);  // true for input file
+        std::vector<ExchangeRate> rates = readData("data.csv", false); // false for data.csv
         printRates(values, rates);
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;
