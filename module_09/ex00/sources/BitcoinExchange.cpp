@@ -37,7 +37,7 @@ static void handleRateErrors(ExchangeRate& currentEntry, const std::string &sRat
         currentEntry.err = NO_ENTRY;
     } else if (currentEntry.rate < 0) {
         currentEntry.err = NEGATIVE;
-    } else if (currentEntry.rate > std::numeric_limits<int>::max()) {
+    } else if (currentEntry.rate > 1000) {
         currentEntry.err = TOO_LARGE;
     }
 }
