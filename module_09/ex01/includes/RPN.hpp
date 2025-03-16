@@ -7,6 +7,7 @@
 #include <sstream>
 #include <stack>
 #include <limits>
+#include <climits>
 
 class RPN {
 private:
